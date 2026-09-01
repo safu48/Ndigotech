@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Quotation Builder | NDIGO TECH SOLUTIONS</title>
+  <meta name="description" content="Generate instant, customized CAD/CAM machinery and software quotations in USD and BDT with official warranty terms.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230284c7'/><text y='70' x='50' font-size='60' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold'>N</text></svg>">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-900 antialiased flex flex-col min-h-screen">
+
+  <!-- Header (no-print) -->
+  <header class="sticky top-0 z-50 shadow-md no-print">
+    <div class="bg-[#131921] text-white px-3 sm:px-6 py-2.5">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6">
+        
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0 hover:outline hover:outline-1 hover:outline-white p-1 rounded transition">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-sky-500 via-cyan-400 to-emerald-400 flex items-center justify-center text-slate-950 font-extrabold text-xl shadow">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <div>
+            <span class="font-heading text-xl font-bold tracking-tight text-white block leading-none">NDIGO<span class="text-amber-400">TECH</span></span>
+            <span class="text-[10px] tracking-wider text-slate-300 uppercase font-semibold">CAD/CAM Store</span>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-2 shrink-0 hover:outline hover:outline-1 hover:outline-white p-1.5 rounded cursor-pointer transition">
+          <i class="fa-solid fa-location-dot text-amber-400 text-base"></i>
+          <div class="text-xs leading-tight">
+            <span class="text-slate-400 block text-[10px]">Deliver to</span>
+            <span class="font-bold text-white">Dhaka & Savar, BD</span>
+          </div>
+        </div>
+
+        <div class="flex-1 max-w-2xl relative">
+          <div class="flex rounded-md overflow-hidden bg-white amazon-search-shadow transition">
+            <select id="amazon-search-category" class="bg-slate-100 text-slate-700 text-xs px-2.5 py-2 border-r border-slate-300 font-medium focus:outline-none cursor-pointer hidden sm:block">
+              <option value="all">All Departments</option>
+              <option value="software">CAD Software</option>
+              <option value="hardware">Plotters & Cutters</option>
+              <option value="digitizer">Camera Digitizers</option>
+              <option value="spares">Spare Parts</option>
+            </select>
+            <input 
+              id="amazon-global-search" 
+              type="text" 
+              placeholder="Search products to make your price quote..." 
+              class="w-full px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none"
+              autocomplete="off"
+            >
+            <button type="button" class="bg-amber-400 hover:bg-amber-500 text-slate-950 px-4 flex items-center justify-center transition" title="Search">
+              <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </button>
+          </div>
+          <div id="amazon-search-results" class="hidden absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-2xl border border-slate-200 z-50 max-h-96 overflow-y-auto divide-y divide-slate-100"></div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button type="button" class="btn-open-cart relative flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-lg border border-slate-700 hover:border-amber-400 transition" title="View Quote Cart">
+            <i class="fa-solid fa-cart-shopping text-lg text-amber-400"></i>
+            <span class="hidden sm:inline text-xs font-bold">Quote Cart</span>
+            <span class="cart-count-badge hidden absolute -top-2 -right-2 bg-rose-600 text-white font-extrabold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+          </button>
+          <button type="button" onclick="window.print()" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-3.5 py-2 rounded-lg text-xs transition flex items-center gap-1.5 shadow">
+            <i class="fa-solid fa-print"></i>
+            <span class="hidden sm:inline">Print Quote</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bg-[#232f3e] text-white text-xs px-3 sm:px-6 py-2 overflow-x-auto whitespace-nowrap border-t border-slate-800">
+      <div class="max-w-7xl mx-auto flex items-center gap-4 sm:gap-6 font-medium">
+        <a href="index.html" class="hover:text-amber-400 transition">All Products</a>
+        <a href="software.html" class="hover:text-amber-400 transition">CAD Software</a>
+        <a href="hardware.html" class="hover:text-amber-400 transition">Plotters & Cutters</a>
+        <a href="digitizer.html" class="hover:text-amber-400 transition">Camera Digitizers</a>
+        <a href="spare-parts.html" class="hover:text-amber-400 transition">Spare Parts</a>
+        <a href="contact.html" class="hover:text-amber-400 transition">Contact & Support</a>
+        <a href="quote-builder.html" class="text-amber-400 font-bold flex items-center gap-1"><i class="fa-solid fa-chevron-right text-[10px]"></i> Quote Builder</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quote Configurator Section -->
+  <section class="py-10 bg-slate-100 border-b border-slate-200 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-8">
+        <span class="badge-choice">Official Price Calculator</span>
+        <h1 class="text-3xl font-extrabold text-slate-900 mt-2 font-heading">Build Your Price Quotation</h1>
+        <p class="text-slate-600 mt-1 text-xs">Choose the machines, software, and spare parts you require. Prices update dynamically in USD and BDT (1 USD = 123 BDT).</p>
+      </div>
+
+      <form id="quotation-config-form" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Column: Configurator Form -->
+        <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+          
+          <!-- Client Company Info -->
+          <div class="border-b border-slate-100 pb-5">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-building text-sky-600"></i> Client / Garments Details
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block font-medium text-slate-700 mb-1">Company / Garments Name</label>
+                <input id="quote-company-name" type="text" value="" placeholder="e.g. Plummy Venture Limited" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+              </div>
+              <div>
+                <label class="block font-medium text-slate-700 mb-1">Attention / Contact Person</label>
+                <input id="quote-contact-person" type="text" value="" placeholder="e.g. Managing Director / CAD Manager" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block font-medium text-slate-700 mb-1">Factory Address</label>
+                <input id="quote-address" type="text" value="" placeholder="e.g. Narayanganj, Dhaka, Bangladesh" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Selections -->
+          <div class="space-y-4 text-xs">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-microchip text-amber-500"></i> Select Machinery & Software
+            </h3>
+
+            <div>
+              <label class="block font-semibold text-slate-800 mb-1">1. Garments CAD Software Suite</label>
+              <select id="cfg-software" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white font-medium focus:ring-2 focus:ring-amber-400">
+                <option value="none" data-price="0" selected>-- Select CAD Software (Optional) --</option>
+                <option value="gmac-cad-40" data-price="3500">GMAC 40.2 Garments Auto CAD Software - $3,500 USD (4,30,500 BDT)</option>
+                <option value="footwear-cad" data-price="2800">G-MAC Footwear 3D CAD Software Suite - $2,800 USD (3,44,400 BDT)</option>
+                <option value="3d-cad" data-price="3200">G-MAC 3D Garments Virtual Sampling CAD - $3,200 USD (3,93,600 BDT)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-800 mb-1">2. Inkjet Plotter Machine</label>
+              <select id="cfg-plotter" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white font-medium focus:ring-2 focus:ring-amber-400">
+                <option value="none" data-price="0" selected>-- Select Plotter Machine (Optional) --</option>
+                <option value="gmac-plotter-gen04" data-price="3250">G-MAC Smart Plotter GEN-04 (220cm / 4-Head) - $3,250 USD (3,99,750 BDT)</option>
+                <option value="nts-jw4-cloud" data-price="3400">NTS-JW4 Cloud Network Plotter (200cm) - $3,400 USD (4,18,200 BDT)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-800 mb-1">3. Pattern Cutting Machine</label>
+              <select id="cfg-cutter" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white font-medium focus:ring-2 focus:ring-amber-400">
+                <option value="none" data-price="0" selected>-- Select Cutting Machine (Optional) --</option>
+                <option value="sinhajet-fg1512" data-price="6500">SINHAJET FG1512 Flat-Bed Cutter (1500x1200mm) - $6,500 USD (7,99,500 BDT)</option>
+                <option value="sinhajet-fg1209" data-price="5200">SINHAJET FG1209 Compact Flat-Bed Cutter - $5,200 USD (6,39,600 BDT)</option>
+                <option value="nts-vertical-cutter" data-price="4200">NTS Vertical Cutting Plotter (180cm) - $4,200 USD (5,16,600 BDT)</option>
+                <option value="nts-template-cutter" data-price="4500">NTS Template Router Cutter - $4,500 USD (5,53,500 BDT)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-800 mb-1">4. Camera Digitizer (Optional)</label>
+              <select id="cfg-digitizer" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white font-medium focus:ring-2 focus:ring-amber-400">
+                <option value="none" data-price="0" selected>-- Select Camera Digitizer (Optional) --</option>
+                <option value="gmac-ras" data-price="1545">G-MAC RAS 1-Click Camera Digitizer - 1,90,000 BDT ($1,545 USD)</option>
+              </select>
+            </div>
+
+            <!-- Spare Parts & Consumables Checkboxes -->
+            <div class="pt-2">
+              <label class="block font-semibold text-slate-800 mb-2">5. Include Genuine Inks & Spare Parts (Optional)</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <label class="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="checkbox" class="cfg-spare-item rounded text-amber-500" data-name="HP-45 Original (Made in Ireland) - 4,300 TK" data-price="35">
+                  <span>HP-45 Original Ireland - $35 (4,300 TK)</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="checkbox" class="cfg-spare-item rounded text-amber-500" data-name="45 Regular Ink Cartridge (China) - 1,850 TK" data-price="15">
+                  <span>45 Regular China - $15 (1,850 TK)</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="checkbox" class="cfg-spare-item rounded text-amber-500" data-name="NTS 45A Premium Ink Cartridge - 3,500 TK" data-price="28.5">
+                  <span>NTS 45A Premium - $28.5 (3,500 TK)</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="checkbox" class="cfg-spare-item rounded text-amber-500" data-name="Lectra Alys Ink Block - 10,500 TK" data-price="85.4">
+                  <span>Lectra Alys Ink - $85.4 (10,500 TK)</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="checkbox" class="cfg-spare-item rounded text-amber-500" data-name="Premium Lectra 703730 Ink - 15,000 TK" data-price="122">
+                  <span>Lectra 703730 Ink - $122 (15,000 TK)</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="checkbox" class="cfg-spare-item rounded text-amber-500" data-name="Virgin Kraft Paper (5 Rolls) - 43,050 TK" data-price="350">
+                  <span>Kraft Paper (5 Rolls) - $350</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="checkbox" class="cfg-spare-item rounded text-amber-500" data-name="Tungsten Cutting Blades (5-Pack)" data-price="180">
+                  <span>Cutting Blades (5-Pack) - $180</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="checkbox" class="cfg-spare-item rounded text-amber-500" data-name="Brushless Servo Motor Kit" data-price="320">
+                  <span>Servo Motor Kit - $320</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right Column: Live Price Summary & Actions -->
+        <div class="lg:col-span-5 space-y-5">
+          
+          <div class="bg-[#131921] text-white p-6 rounded-2xl shadow-xl space-y-4 border border-slate-800 sticky top-24">
+            <h3 class="text-base font-bold text-amber-400 font-heading flex items-center justify-between">
+              <span>Price Summary</span>
+              <span class="text-[11px] bg-slate-800 text-slate-300 font-normal px-2 py-0.5 rounded">1 USD = 123 BDT</span>
+            </h3>
+
+            <div class="space-y-3 text-xs divide-y divide-slate-800">
+              <div class="flex justify-between text-base font-bold text-white pt-2">
+                <span>Total Offer Price (USD):</span>
+                <span id="quote-total-usd" class="font-extrabold text-amber-400 text-xl font-heading">$0</span>
+              </div>
+              <div class="flex justify-between text-xs font-semibold text-emerald-400 pt-2">
+                <span>Approximate Total (BDT):</span>
+                <span id="quote-total-bdt" class="font-bold text-sm">0 BDT</span>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-[11px] text-slate-300 space-y-1.5">
+              <p class="font-bold text-amber-400 text-xs mb-1"><i class="fa-solid fa-shield-halved mr-1"></i> Warranty & Service Highlights:</p>
+              <p>❖ <strong>Software:</strong> Five years Service Warranty, Major ONE update free, Lifetime License Warranty.</p>
+              <p>❖ <strong>Plotter Machine:</strong> One year parts warranty, Two years service Warranty.</p>
+              <p>❖ <strong>Cutter Machine:</strong> Two year parts warranty, Two years service Warranty.</p>
+              <p>❖ <strong>Digitizer:</strong> One year full parts warranty, Two years service Warranty.</p>
+            </div>
+
+            <div class="space-y-2 pt-2">
+              <button id="btn-whatsapp-quote" type="button" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow hover:scale-105">
+                <i class="fa-brands fa-whatsapp text-base"></i> Send to WhatsApp (+88 01770-082829)
+              </button>
+              <button id="btn-print-quote" type="button" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-3 rounded-xl text-xs transition shadow flex items-center justify-center gap-2">
+                <i class="fa-solid fa-print"></i> Print Official Quotation Letterhead
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- Official Printable Quotation Document (Visible on screen and on print) -->
+  <section class="py-12 bg-slate-200 printable-document-section">
+    <div id="quotation-printable-area" class="max-w-4xl mx-auto bg-white p-8 sm:p-12 shadow-2xl rounded-2xl border border-slate-300 print:shadow-none print:border-none print:p-0">
+      
+      <!-- Letterhead Header -->
+      <div class="border-b-2 border-slate-900 pb-6 mb-6">
+        <div class="flex justify-between items-start gap-4">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-950 font-heading tracking-tight">NDIGO TECH SOLUTIONS</h2>
+            <p class="text-xs font-bold text-sky-700 tracking-wider uppercase mt-0.5">Garments CAD Software, High-Speed Plotters & Cutting Machinery</p>
+            <p class="text-[11px] text-slate-600 mt-2">
+              <strong>Head Office:</strong> 63/13, Sector-11, Uttara, Dhaka-1230, Bangladesh<br>
+              <strong>Workshop & Depot:</strong> House-07/19/20, Road-11/12, Alamnagar, Hemayetpur, Savar, Dhaka<br>
+              <strong>Hotline:</strong> +88 01770-082829 / +88 01811-476101 • <strong>Email:</strong> ndigotechsolutions@gmail.com
+            </p>
+          </div>
+          <div class="text-right shrink-0">
+            <span class="inline-block bg-slate-900 text-white font-bold text-xs px-3 py-1 rounded">PRICE QUOTATION</span>
+            <p class="text-[11px] text-slate-500 mt-2"><strong>Date:</strong> <span id="quote-doc-date">September 01, 2026</span></p>
+            <p class="text-[11px] text-slate-500"><strong>Ref:</strong> NTS/CAD-CAM/2026/09</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Addressed To -->
+      <div class="mb-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
+        <p class="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Quotation Prepared For:</p>
+        <h4 id="doc-client-company" class="text-base font-bold text-slate-900 font-heading mt-1">[Enter Company / Garments Name]</h4>
+        <p id="doc-client-person" class="text-slate-700">Attn: [Attention / Contact Person]</p>
+        <p id="doc-client-address" class="text-slate-600">[Factory Address]</p>
+      </div>
+
+      <!-- Itemized Price Table -->
+      <div class="mb-8">
+        <table class="w-full text-xs text-left border-collapse">
+          <thead>
+            <tr class="bg-slate-900 text-white">
+              <th class="py-2.5 px-4 font-bold rounded-l-lg">SL. Product Name & Technical Specifications</th>
+              <th class="py-2.5 px-4 font-bold text-center">Qty</th>
+              <th class="py-2.5 px-4 font-bold text-right">Unit Price (USD)</th>
+              <th class="py-2.5 px-4 font-bold text-right rounded-r-lg">Total Price (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="quote-preview-items" class="divide-y divide-slate-200">
+            <tr>
+              <td colspan="4" class="py-8 text-center text-slate-400">
+                No items selected yet. Choose products from the form above.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exact Warranty & Official Terms Verbatim from Source Documents -->
+      <div class="border-t border-slate-300 pt-4 mb-8">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2 underline">Terms and Conditions:</h4>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] text-slate-700">
+          <li>❖ Software Delivery from Ready Stock.</li>
+          <li>❖ Software “Five years” Service Warranty.</li>
+          <li>❖ Software Major ONE update free.</li>
+          <li>❖ Software Life Time License Warranty.</li>
+          <li>❖ Plotter Machine Delivery from Ready Stock.</li>
+          <li>❖ Plotter Machine One year parts warranty.</li>
+          <li>❖ Cutter Machine Two year parts warranty.</li>
+          <li>❖ Plotter and Cutter Machine “Two years” service Warranty.</li>
+          <li class="col-span-1 sm:col-span-2 text-slate-900 font-semibold mt-1">❖ Payment: 50% Advance or 100% TT. (15% will be Added base on the Offered Price If by Account Pay).</li>
+          <li class="col-span-1 sm:col-span-2 text-slate-600 text-[10px]">❖ Digitizer Camera: One Year Full parts warranty, Two years service Warranty. Delivery 12-14 Working Days. Payment: 100% Cash / Cheque on Delivery.</li>
+        </ul>
+      </div>
+
+      <!-- Signature Block -->
+      <div class="pt-8 border-t border-slate-300 flex justify-between items-end text-xs">
+        <div class="text-center">
+          <div class="w-40 border-b border-slate-400 mb-1"></div>
+          <p class="font-bold text-slate-800">Client Acceptance Signature</p>
+        </div>
+        <div class="text-center">
+          <p class="font-bold text-slate-950 text-sm">Nowshar Alam</p>
+          <p class="text-slate-600 text-[11px]">Sr. Sales and Application Manager</p>
+          <p class="font-bold text-sky-800 text-[11px]">NDIGO TECH SOLUTIONS</p>
+          <div class="w-48 border-b border-slate-900 mt-2 mb-1"></div>
+          <p class="text-[10px] text-slate-500 uppercase tracking-widest">Authorized Signature</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-Over Quotation Cart Drawer -->
+  <div id="cart-drawer-overlay" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm opacity-0 cart-drawer-overlay flex justify-end no-print">
+    <div id="cart-drawer" class="w-full max-w-md bg-white h-full shadow-2xl flex flex-col justify-between translate-x-full cart-drawer">
+      
+      <div class="p-4 bg-[#131921] text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-amber-400"></i>
+          <h3 class="font-bold text-sm font-heading">Your Quotation Cart</h3>
+        </div>
+        <button id="btn-close-cart" type="button" class="text-slate-400 hover:text-white p-1 rounded" title="Close">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="cart-drawer-items" class="p-4 overflow-y-auto flex-1 space-y-3"></div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200 space-y-3">
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Price (USD):</span>
+            <span id="cart-drawer-subtotal-usd" class="font-bold text-slate-900 font-heading">$0</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Price (BDT):</span>
+            <span id="cart-drawer-subtotal-bdt" class="font-extrabold text-emerald-600 font-heading">0 BDT</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <button type="button" onclick="sendCartToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-xs transition flex items-center justify-center gap-2 shadow">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Send Quotation to WhatsApp
+          </button>
+          <button type="button" onclick="clearCart()" class="w-full text-slate-500 hover:text-rose-600 text-[11px] font-semibold py-1">
+            Clear Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#131921] text-slate-400 text-xs pt-12 pb-8 border-t border-slate-800 mt-auto no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[11px]">
+      <p>&copy; 2026 NDIGO TECH SOLUTIONS. All rights reserved. • Dhaka Office: Uttara • Savar Spare Parts Depot</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech%20Solutions!%20I%20have%20configured%20a%20quotation." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-emerald-600 transition pulse-whatsapp no-print" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

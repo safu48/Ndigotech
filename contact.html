@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Service Support | NDIGO TECH SOLUTIONS</title>
+  <meta name="description" content="Contact NDIGO TECH SOLUTIONS in Uttara (Dhaka) and Savar (Hemayetpur). 24/7 technical support, machine sales, and spare parts.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230284c7'/><text y='70' x='50' font-size='60' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold'>N</text></svg>">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-900 antialiased flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 shadow-md">
+    <div class="bg-[#131921] text-white px-3 sm:px-6 py-2.5">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6">
+        
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0 hover:outline hover:outline-1 hover:outline-white p-1 rounded transition">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-sky-500 via-cyan-400 to-emerald-400 flex items-center justify-center text-slate-950 font-extrabold text-xl shadow">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <div>
+            <span class="font-heading text-xl font-bold tracking-tight text-white block leading-none">NDIGO<span class="text-amber-400">TECH</span></span>
+            <span class="text-[10px] tracking-wider text-slate-300 uppercase font-semibold">CAD/CAM Store</span>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-2 shrink-0 hover:outline hover:outline-1 hover:outline-white p-1.5 rounded cursor-pointer transition">
+          <i class="fa-solid fa-location-dot text-amber-400 text-base"></i>
+          <div class="text-xs leading-tight">
+            <span class="text-slate-400 block text-[10px]">Deliver to</span>
+            <span class="font-bold text-white">Dhaka & Savar, BD</span>
+          </div>
+        </div>
+
+        <div class="flex-1 max-w-2xl relative">
+          <div class="flex rounded-md overflow-hidden bg-white amazon-search-shadow transition">
+            <select id="amazon-search-category" class="bg-slate-100 text-slate-700 text-xs px-2.5 py-2 border-r border-slate-300 font-medium focus:outline-none cursor-pointer hidden sm:block">
+              <option value="all">All Departments</option>
+              <option value="software">CAD Software</option>
+              <option value="hardware">Plotters & Cutters</option>
+              <option value="digitizer">Camera Digitizers</option>
+              <option value="spares">Spare Parts</option>
+            </select>
+            <input 
+              id="amazon-global-search" 
+              type="text" 
+              placeholder="Search help, technical service, sales demo centers..." 
+              class="w-full px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none"
+              autocomplete="off"
+            >
+            <button type="button" class="bg-amber-400 hover:bg-amber-500 text-slate-950 px-4 flex items-center justify-center transition" title="Search">
+              <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </button>
+          </div>
+          <div id="amazon-search-results" class="hidden absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-2xl border border-slate-200 z-50 max-h-96 overflow-y-auto divide-y divide-slate-100"></div>
+        </div>
+
+        <!-- Header Actions: Cart & Quick Quote -->
+        <div class="flex items-center gap-3">
+          <button type="button" class="btn-open-cart relative flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-lg border border-slate-700 hover:border-amber-400 transition" title="View Quote Cart">
+            <i class="fa-solid fa-cart-shopping text-lg text-amber-400"></i>
+            <span class="hidden sm:inline text-xs font-bold">Quote Cart</span>
+            <span class="cart-count-badge hidden absolute -top-2 -right-2 bg-rose-600 text-white font-extrabold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+          </button>
+          <a href="quote-builder.html" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-3.5 py-2 rounded-lg text-xs transition flex items-center gap-1.5 shadow">
+            <i class="fa-solid fa-calculator"></i>
+            <span class="hidden sm:inline">Quote Builder</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bg-[#232f3e] text-white text-xs px-3 sm:px-6 py-2 overflow-x-auto whitespace-nowrap border-t border-slate-800">
+      <div class="max-w-7xl mx-auto flex items-center gap-4 sm:gap-6 font-medium">
+        <a href="index.html" class="hover:text-amber-400 transition">All Products</a>
+        <a href="software.html" class="hover:text-amber-400 transition">CAD Software</a>
+        <a href="hardware.html" class="hover:text-amber-400 transition">Plotters & Cutters</a>
+        <a href="digitizer.html" class="hover:text-amber-400 transition">Camera Digitizers</a>
+        <a href="spare-parts.html" class="hover:text-amber-400 transition">Spare Parts</a>
+        <a href="contact.html" class="text-amber-400 font-bold flex items-center gap-1"><i class="fa-solid fa-chevron-right text-[10px]"></i> Contact & Offices</a>
+        <a href="quote-builder.html" class="text-amber-400 font-bold hover:underline ml-auto flex items-center gap-1">
+          <i class="fa-solid fa-calculator"></i> Make an Instant Quotation
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white py-12 px-4 relative">
+    <div class="max-w-7xl mx-auto text-center max-w-2xl space-y-2">
+      <span class="badge-choice">24/7 Service Support</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">Contact NDIGO Tech Solutions</h1>
+      <p class="text-slate-300 text-xs sm:text-sm">
+        Connect directly with our sales managers and engineers via WhatsApp, Phone, or send a quick message below.
+      </p>
+    </div>
+  </section>
+
+  <!-- Direct Communication & Offices Section -->
+  <section class="py-12 bg-slate-100 flex-1">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <!-- Direct Contact Channels Banner -->
+      <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm text-center space-y-4">
+        <h3 class="text-xl font-extrabold text-slate-900 font-heading">Direct Hotlines & Instant Support</h3>
+        <p class="text-xs text-slate-600 max-w-xl mx-auto">
+          Need an immediate machinery quote, live CAD demonstration, or urgent spare parts? Reach us instantly:
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+          <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech%20Solutions!%20I%20have%20an%20inquiry." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow hover:scale-105">
+            <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp: +88 01770-082829
+          </a>
+          <a href="tel:+8801770082829" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow hover:scale-105">
+            <i class="fa-solid fa-phone text-sky-400"></i> Call: +88 01770-082829
+          </a>
+          <a href="tel:+8801811476101" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-6 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow">
+            <i class="fa-solid fa-phone text-amber-400"></i> Call: +88 01811-476101
+          </a>
+          <a href="mailto:ndigotechsolutions@gmail.com" class="bg-sky-600 hover:bg-sky-700 text-white font-bold px-6 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow">
+            <i class="fa-solid fa-envelope"></i> Email: ndigotechsolutions@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Working Quick Message Service Form with ASP.NET & WhatsApp Integration -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+        <div>
+          <span class="badge-best-seller">Online Message Service</span>
+          <h3 class="text-xl font-bold text-slate-900 font-heading mt-1">Send Us a Quick Inquiry</h3>
+          <p class="text-xs text-slate-500">Fill out this quick form. It is saved directly to our system and generates an instant WhatsApp copy!</p>
+        </div>
+
+        <div id="contact-form-feedback" class="hidden"></div>
+
+        <form id="contact-inquiry-form" class="space-y-4 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="font-bold text-slate-700 block mb-1">Your Full Name *</label>
+              <input id="contact-name" type="text" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none" placeholder="e.g. Nowshar Alam">
+            </div>
+            <div>
+              <label class="font-bold text-slate-700 block mb-1">Garments / Factory Name *</label>
+              <input id="contact-company" type="text" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none" placeholder="e.g. Plummy Venture Ltd.">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="font-bold text-slate-700 block mb-1">Phone / WhatsApp Number *</label>
+              <input id="contact-phone" type="tel" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none" placeholder="+88 01700-000000">
+            </div>
+            <div>
+              <label class="font-bold text-slate-700 block mb-1">Product of Interest</label>
+              <select id="contact-product" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-400 bg-white">
+                <option value="GMAC 40.2 CAD Software">GMAC 40.2 Garments CAD Software Suite</option>
+                <option value="G-MAC GEN-04 Plotter (220cm)">G-MAC Smart Plotter GEN-04 (220cm)</option>
+                <option value="SINHAJET FG1512 Flat-Bed Cutter">SINHAJET FG1512 Flat-Bed Pattern Cutter</option>
+                <option value="G-MAC RAS Camera Digitizer">G-MAC RAS 1-Click Camera Digitizer</option>
+                <option value="3-in-1 Complete Sample Room Combo">3-in-1 Complete Turnkey Combo ($8,500 USD)</option>
+                <option value="Spare Parts & HP45 Ink">Spare Parts, Blades & HP45 Ink Cartridges</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Your Requirements / Question *</label>
+            <textarea id="contact-message" rows="3" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none" placeholder="Write about how many machines you need, delivery location in Dhaka/Savar, or demo request..."></textarea>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button type="submit" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-8 py-3 rounded-lg text-xs transition shadow hover:scale-105 flex items-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Submit Message</span>
+            </button>
+            <span class="text-[11px] text-slate-500">🔒 Fast response within 15 minutes</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Two Physical Branch Locations -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Dhaka / Uttara Head Office -->
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between amazon-card">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="badge-best-seller">Dhaka Head Office</span>
+              <i class="fa-solid fa-building text-sky-600 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-heading">Uttara Branch & Demo Center</h3>
+            <p class="text-xs text-slate-500 mt-1">Live Software Demos & Sales Office</p>
+
+            <div class="mt-4 space-y-2 text-xs text-slate-700">
+              <p><i class="fa-solid fa-location-dot text-rose-500 mr-2"></i> 63/13, Sector-11, Uttara, Dhaka-1230, Bangladesh</p>
+              <p><i class="fa-solid fa-phone text-sky-600 mr-2"></i> +88 01770-082829 / +88 01811-476101</p>
+              <p><i class="fa-solid fa-envelope text-slate-500 mr-2"></i> ndigotechsolutions@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Open 6 Days a Week</span>
+            <a href="https://wa.me/8801770082829" target="_blank" class="text-xs font-bold text-emerald-600 hover:text-emerald-700">
+              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Savar Branch & Workshop -->
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between amazon-card">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="badge-choice">Savar Spares Depot</span>
+              <i class="fa-solid fa-warehouse text-emerald-600 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-heading">Hemayetpur Workshop & Depot</h3>
+            <p class="text-xs text-slate-500 mt-1">Machine Testing, Spare Parts & Service Depot</p>
+
+            <div class="mt-4 space-y-2 text-xs text-slate-700">
+              <p><i class="fa-solid fa-location-dot text-rose-500 mr-2"></i> House-07/19/20, Road-11/12, Alamnagar, Hemayetpur, Savar, Dhaka</p>
+              <p><i class="fa-solid fa-phone text-emerald-600 mr-2"></i> +88 01770-082829 / +88 01811-476101</p>
+              <p><i class="fa-solid fa-user-tie text-slate-500 mr-2"></i> Nowshar Alam (Sr. Sales & Application Manager)</p>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-sky-600 font-bold"><i class="fa-solid fa-truck"></i> Ready in Stock</span>
+            <a href="https://wa.me/8801770082829" target="_blank" class="text-xs font-bold text-emerald-600 hover:text-emerald-700">
+              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-Over Quotation Cart Drawer -->
+  <div id="cart-drawer-overlay" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm opacity-0 cart-drawer-overlay flex justify-end">
+    <div id="cart-drawer" class="w-full max-w-md bg-white h-full shadow-2xl flex flex-col justify-between translate-x-full cart-drawer">
+      
+      <div class="p-4 bg-[#131921] text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-amber-400"></i>
+          <h3 class="font-bold text-sm font-heading">Your Quotation Cart</h3>
+        </div>
+        <button id="btn-close-cart" type="button" class="text-slate-400 hover:text-white p-1 rounded" title="Close">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="cart-drawer-items" class="p-4 overflow-y-auto flex-1 space-y-3"></div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200 space-y-3">
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Price (USD):</span>
+            <span id="cart-drawer-subtotal-usd" class="font-bold text-slate-900 font-heading">$0</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Price (BDT):</span>
+            <span id="cart-drawer-subtotal-bdt" class="font-extrabold text-emerald-600 font-heading">0 BDT</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <button type="button" onclick="sendCartToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-xs transition flex items-center justify-center gap-2 shadow">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Send Quotation to WhatsApp
+          </button>
+          <a href="quote-builder.html" class="w-full block text-center bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-lg text-xs transition shadow">
+            <i class="fa-solid fa-file-invoice-dollar mr-1"></i> Open Official Quote Builder
+          </a>
+          <button type="button" onclick="clearCart()" class="w-full text-slate-500 hover:text-rose-600 text-[11px] font-semibold py-1">
+            Clear Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#131921] text-slate-400 text-xs pt-12 pb-8 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[11px]">
+      <p>&copy; 2026 NDIGO TECH SOLUTIONS. All rights reserved. • Dhaka: Uttara • Savar: Hemayetpur</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech%20Solutions!%20I%20have%20an%20inquiry." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-emerald-600 transition pulse-whatsapp" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

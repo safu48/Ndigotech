@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spare Parts & Consumables Store | NDIGO TECH SOLUTIONS</title>
+  <meta name="description" content="Genuine HP45 Ink Cartridges, Virgin Kraft Paper, Plotter Motherboards, Servo Motors, Cutting Blades, Power Supplies in Bangladesh.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230284c7'/><text y='70' x='50' font-size='60' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold'>N</text></svg>">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#0c1017] text-[#e2e8f0] antialiased flex flex-col min-h-screen font-body">
+
+  <!-- Header -->
+  <!-- Top Tactical Announcement Ticker -->
+  <div class="bg-[#080c12] text-slate-400 text-[11px] py-2 px-4 border-b border-[#1c2432] overflow-x-auto whitespace-nowrap">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 font-mono-tech">
+      <div class="flex items-center gap-3">
+        <span class="text-[#e06d2d] font-bold flex items-center gap-1.5"><i class="fa-solid fa-bolt"></i> READY STOCK IN SAVAR WAREHOUSE</span>
+        <span class="text-slate-700">•</span>
+        <span class="text-emerald-400 font-semibold">100% REPLACEMENT WARRANTY ON INK-45</span>
+        <span class="text-slate-700">•</span>
+        <span class="text-slate-300">FREE MACHINE SERVICE WITH INK</span>
+      </div>
+      <div class="flex items-center gap-4 shrink-0 text-slate-400">
+        <span>DHAKA & SAVAR LOCAL SUPPORT</span>
+        <a href="tel:+8801770082829" class="text-white hover:text-[#e06d2d] font-bold transition flex items-center gap-1"><i class="fa-solid fa-phone text-[10px] text-[#e06d2d]"></i> +88 01770-082829</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 shadow-2xl border-b border-[#19212e]">
+    <div class="bg-[#0c1017] text-white px-3 sm:px-6 py-3">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6">
+        
+        <!-- Logo (Apocalypse / Brigade Style) -->
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0 group transition">
+          <div class="w-10 h-10 rounded-lg bg-[#e06d2d] flex items-center justify-center text-white font-black text-xl shadow-lg group-hover:scale-105 transition">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <div>
+            <span class="font-bebas text-2xl sm:text-3xl tracking-wider text-white block leading-none">NDIGO<span class="text-[#e06d2d]">TECH</span></span>
+            <span class="font-mono-tech text-[9px] tracking-widest text-slate-400 uppercase font-semibold block">GARMENTS CAD/CAM SOLUTIONS</span>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-2 shrink-0 hover:outline hover:outline-1 hover:outline-white p-1.5 rounded cursor-pointer transition">
+          <i class="fa-solid fa-location-dot text-amber-400 text-base"></i>
+          <div class="text-xs leading-tight">
+            <span class="text-slate-400 block text-[10px]">Deliver to</span>
+            <span class="font-bold text-white">Dhaka & Savar, BD</span>
+          </div>
+        </div>
+
+        <div class="flex-1 max-w-2xl relative">
+          <div class="flex rounded-md overflow-hidden bg-white amazon-search-shadow transition">
+            <select id="amazon-search-category" class="bg-slate-100 text-slate-700 text-xs px-2.5 py-2 border-r border-slate-300 font-medium focus:outline-none cursor-pointer hidden sm:block">
+              <option value="spares" selected>Spare Parts</option>
+              <option value="all">All Departments</option>
+              <option value="software">CAD Software</option>
+              <option value="hardware">Plotters & Cutters</option>
+              <option value="digitizer">Camera Digitizers</option>
+            </select>
+            <input 
+              id="amazon-global-search" 
+              type="text" 
+              placeholder="Search HP45 ink, Kraft paper, blades, mainboards..." 
+              class="w-full px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none"
+              autocomplete="off"
+            >
+            <button type="button" class="bg-amber-400 hover:bg-amber-500 text-slate-950 px-4 flex items-center justify-center transition" title="Search">
+              <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </button>
+          </div>
+          <div id="amazon-search-results" class="hidden absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-2xl border border-slate-200 z-50 max-h-96 overflow-y-auto divide-y divide-slate-100"></div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button type="button" class="btn-open-cart relative flex items-center gap-1.5 bg-[#161e2b] hover:bg-[#1f2937] text-white px-3 py-2 rounded-lg border border-[#283549] hover:border-[#e06d2d] transition" title="View Quote Cart">
+            <i class="fa-solid fa-cart-shopping text-base text-[#e06d2d]"></i>
+            <span class="hidden sm:inline text-xs font-bold font-mono-tech">CART</span>
+            <span class="cart-count-badge hidden absolute -top-2 -right-2 bg-[#e06d2d] text-white font-extrabold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+          </button>
+          <a href="quote-builder.html" class="btn-apocalypse-primary px-3.5 py-2 rounded-lg text-xs transition flex items-center gap-1.5 font-bold font-mono-tech">
+            <i class="fa-solid fa-calculator"></i>
+            <span class="hidden sm:inline">QUOTE BUILDER</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bg-[#121822] text-slate-300 text-xs px-3 sm:px-6 py-2.5 overflow-x-auto whitespace-nowrap border-t border-[#1c2432]">
+      <div class="max-w-7xl mx-auto flex items-center gap-4 sm:gap-6 font-medium">
+        <a href="index.html" class="hover:text-amber-400 transition">All Products</a>
+        <a href="software.html" class="hover:text-amber-400 transition">CAD Software</a>
+        <a href="hardware.html" class="hover:text-amber-400 transition">Plotters & Cutters</a>
+        <a href="digitizer.html" class="hover:text-amber-400 transition">Camera Digitizers</a>
+        <a href="spare-parts.html" class="text-amber-400 font-bold flex items-center gap-1"><i class="fa-solid fa-chevron-right text-[10px]"></i> Spare Parts & Ink</a>
+        <a href="contact.html" class="hover:text-amber-400 transition">Contact & Support</a>
+        <a href="quote-builder.html" class="text-amber-400 font-bold hover:underline ml-auto flex items-center gap-1">
+          <i class="fa-solid fa-calculator"></i> Make an Instant Quotation
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="bg-[#090d14] text-white py-12 px-4 relative border-b border-[#1c2432]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="space-y-2">
+        <span class="badge-best-seller">Ready Stock in Savar Depot</span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">Genuine Spare Parts & Inks</h1>
+        <p class="text-slate-300 text-sm max-w-2xl">
+          Quick delivery in Dhaka and Savar for HP45 ink, Kraft paper, motherboards, servo motors, cutting blades, and belts.
+        </p>
+      </div>
+      <div class="shrink-0 flex gap-3">
+        <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech!%20I%20need%20spare%20parts%20urgently." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-lg text-xs transition flex items-center gap-2 shadow">
+          <i class="fa-brands fa-whatsapp"></i> Urgent Spares Order
+        </a>
+        <a href="quote-builder.html" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-xs shadow transition">
+          <i class="fa-solid fa-calculator mr-1"></i> Make Price Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spare Parts Grid Showcase -->
+  <section class="py-12 bg-[#0c1017] flex-1">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Tactical Terms & Warranty Strip (Brigade / Apocalypse Style from INK.pdf) -->
+      <div class="mb-8 bg-[#121822] border border-[#232e40] rounded-2xl p-5 shadow-2xl">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#e06d2d] text-white flex items-center justify-center font-bold text-lg shrink-0 shadow-md">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="badge-tech-tag">[OFFICIAL WARRANTY POLICY]</span>
+                <span class="text-xs text-slate-400 font-mono-tech">SOURCE: INK.PDF</span>
+              </div>
+              <h2 class="text-base sm:text-lg font-bold text-white font-heading">Official Terms &amp; Warranty for Genuine INK-45</h2>
+              <p class="text-xs text-slate-400">Guaranteed authentic plotter consumables with 100% replacement warranty &amp; free service engineer support</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs font-mono-tech">
+            <span class="bg-[#18202c] border border-[#283549] text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow">
+              <i class="fa-solid fa-circle-check text-emerald-400"></i> 100% Replacement Warranty
+            </span>
+            <span class="bg-[#18202c] border border-[#283549] text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow">
+              <i class="fa-solid fa-circle-check text-emerald-400"></i> 1-Yr Product Warranty
+            </span>
+            <span class="bg-[#18202c] border border-[#283549] text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow">
+              <i class="fa-solid fa-circle-check text-[#e06d2d]"></i> Free Machine &amp; CAD Service
+            </span>
+            <span class="bg-[#18202c] border border-[#283549] text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow">
+              <i class="fa-solid fa-circle-check text-emerald-400"></i> VAT/TAX Exempted
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        
+        <!-- Part 1: HP-45 Original (Import India) [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-best-seller">100% Original</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Made in Ireland</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-hp45-original.jpg" alt="HP-45 Original" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-sky-800 bg-sky-50 px-2 py-0.5 rounded">Import from India</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              HP-45 Original Ink Cartridge (Made In Ireland)
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$35 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$39</span>
+              <span class="badge-deal">Save 10%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">4,300 TK (Reg: 4,800 TK) • 100% Replacement</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-hp45-original-india">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-hp45-original-india')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 2: 45 Regular (China) [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">Best Value</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Savar Stock</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-45-regular.jpg" alt="45 Regular Ink" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded">Made In China</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              45 Regular Plotter Ink Cartridge
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$15 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$17</span>
+              <span class="badge-deal">Save 12%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">1,850 TK (Reg: 2,100 TK) • 100% Replacement</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-45-regular">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-45-regular')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 3: NTS 45A Premium [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">NTS Choice</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> High Resolution</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-nts-45a.jpg" alt="NTS 45A Ink" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-sky-800 bg-sky-50 px-2 py-0.5 rounded">Made In China</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              NTS 45A Premium Plotter Ink Cartridge
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$28.5 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$30</span>
+              <span class="badge-deal">Save 5%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">3,500 TK (Reg: 3,700 TK) • Free Machine Service</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-nts-45a">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-nts-45a')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 4: Wecare 45 [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-best-seller">Popular</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Anti-Clogging</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-wecare-45.jpg" alt="Wecare 45 Ink" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-sky-800 bg-sky-50 px-2 py-0.5 rounded">Made In China</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Wecare 45 High-Clarity Ink Cartridge
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$18 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$20</span>
+              <span class="badge-deal">Save 12%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">2,200 TK (Reg: 2,500 TK) • 1-Yr Warranty</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-wecare-45">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-wecare-45')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 5: TKT 45 (Ireland) [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">OEM Ireland</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Razor Sharp</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-tkt-45.jpg" alt="TKT 45 Ireland" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">Made In Ireland</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              TKT 45 Original European Ink Cartridge
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$31.7 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$34</span>
+              <span class="badge-deal">Save 7%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">3,900 TK (Reg: 4,200 TK) • 100% Replacement</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-tkt-45">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-tkt-45')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 6: NTS 45A Plus (Hong Kong) [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">Hong Kong Edition</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Export Grade</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-nts-45a-plus.jpg" alt="NTS 45A Plus" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-rose-800 bg-rose-50 px-2 py-0.5 rounded">Made In Hong Kong</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              NTS 45A Plus Ultra Cartridge
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$32.1 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$35</span>
+              <span class="badge-deal">Save 8%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">3,950 TK (Reg: 4,300 TK) • Free CAD Service</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-nts-45a-plus">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-nts-45a-plus')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 7: Wecare 45A Plus [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-deal">High Yield</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Extended Tank</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-wecare-45a-plus.jpg" alt="Wecare 45A Plus" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-sky-800 bg-sky-50 px-2 py-0.5 rounded">Made In China</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Wecare 45A Plus High-Yield Cartridge
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$31.3 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$33</span>
+              <span class="badge-deal">Save 4%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">3,850 TK (Reg: 4,000 TK) • 1-Yr Warranty</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-wecare-45a-plus">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-wecare-45a-plus')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 8: HP-45 Original (China Import) [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-best-seller">100% Original</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Factory Sealed</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-hp45-cartridge.png" alt="HP-45 Original China Import" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-sky-800 bg-sky-50 px-2 py-0.5 rounded">Import from China</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              HP-45 Original (Import China / Made in Ireland)
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$39 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$43</span>
+              <span class="badge-deal">Save 9%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">4,800 TK (Reg: 5,300 TK) • 100% Replacement</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-hp45-original-china">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-hp45-original-china')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 9: HP-45 Local Utility [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">Budget Pick</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Draft Plotting</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-hp45-cartridge.png" alt="HP-45 Local" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">Without QR Code</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              HP-45 Local Utility Ink Cartridge
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$13.8 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$15</span>
+              <span class="badge-deal">Save 8%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">1,700 TK (Reg: 1,850 TK) • 100% Replacement</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-hp45-local">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-hp45-local')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 10: Lectra Alys Ink (China) [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-deal">Lectra Compatible</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> High Volume</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-alys-china.jpg" alt="Lectra Alys Ink China" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-indigo-800 bg-indigo-50 px-2 py-0.5 rounded">Made In China</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Lectra Alys Ink Cartridge Block
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$85.4 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$98</span>
+              <span class="badge-deal">Save 13%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">10,500 TK (Reg: 12,000 TK) • 1-Yr Warranty</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-alys-china">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-alys-china')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 11: Lectra Alys Ink (Vietnam) [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">Vietnam Grade</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Pure Flow</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-alys-vietnam.jpg" alt="Lectra Alys Ink Vietnam" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded">Made In Vietnam</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Lectra Alys Ink Cartridge Block (Vietnam)
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$101.6 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$114</span>
+              <span class="badge-deal">Save 11%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">12,500 TK (Reg: 14,000 TK) • Free Service</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-alys-vietnam">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-alys-vietnam')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 12: Premium Lectra Alys 703730 [INK.pdf] -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-best-seller">OEM 703730</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Heavy Duty</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/ink-alys-premium-703730.jpg" alt="Premium Lectra 703730" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-purple-800 bg-purple-50 px-2 py-0.5 rounded">Part 703730 • Made in China</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Premium Lectra Alys 703730 Ink Cassette
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$122 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$130</span>
+              <span class="badge-deal">Save 6%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">15,000 TK (Reg: 16,000 TK) • 100% Replacement</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="ink-alys-premium-703730">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('ink-alys-premium-703730')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 13: HP45 10-Pack Box -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-best-seller">10-Pack Value</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Ready Stock</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-hp45-cartridge.png" alt="HP45 Cartridge" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded">Quick-Dry Black</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              HP45 / HP45A Original Ink Cartridges (10-Pack)
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$250 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$320</span>
+              <span class="badge-deal">Save 22%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">30,750 BDT • 10 Genuine Cartridges</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="spare-hp45-cartridges">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('spare-hp45-cartridges')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 14: Kraft Paper -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">Bulk Savings</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Ready Stock</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-paper-roll.png" alt="Kraft Paper" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded">80gsm - 300gsm</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Virgin Kraft Paper Rolls (5 Big Rolls)
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$350 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$420</span>
+              <span class="badge-deal">Save 17%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">43,050 BDT • 5 Heavy Rolls</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="spare-kraft-paper">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('spare-kraft-paper')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 15: Mainboard & Carriage Board -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">OEM Genuine</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Savar Stock</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-motherboard.png" alt="Mainboard" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded">High-Speed CPU</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Plotter Mainboard & Carriage Board Set
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$450 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$550</span>
+              <span class="badge-deal">Save 18%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">55,350 BDT • 6 Months Warranty</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="part-mainboard">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('part-mainboard')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 16: Servo Motor & Encoder -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">High Precision</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Savar Stock</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-servo-motor.png" alt="Servo Motor" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Optical Raster Encoder</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Brushless DC Servo Motor & Encoder Kit
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$320 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$400</span>
+              <span class="badge-deal">Save 20%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">39,360 BDT • 1-Yr Warranty</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="part-servo-motor">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('part-servo-motor')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 17: Cutting Blades & Holder -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-best-seller">Super Sharp</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Savar Stock</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-circular-blade.png" alt="Cutting Blades" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded">30° / 45° / 60° Angles</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Tungsten Alloy Cutting Blades & Holder (5-Pack)
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$180 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$230</span>
+              <span class="badge-deal">Save 22%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">22,140 BDT • Box of 5 Blades</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="part-blades-knives">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('part-blades-knives')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 18: Power Supply -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">Heavy Duty</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Savar Stock</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-power-supply.png" alt="Power Supply" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded">24V / 36V 350W</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Industrial MeanWell Power Supply Unit
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$140 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$180</span>
+              <span class="badge-deal">Save 22%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">17,220 BDT • 1-Yr Warranty</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="part-power-supply">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('part-power-supply')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+        <!-- Part 19: Timing Belts -->
+        <div class="home-product-card rounded-xl p-4 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-choice">Non-Stretch</span>
+              <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Savar Stock</span>
+            </div>
+            <div class="w-full product-image-frame aspect-square bg-white rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3 border border-slate-100">
+              <img src="assets/images/products/part-timing-belt.png" alt="Timing Belts" class="max-h-full object-contain product-img-hover">
+            </div>
+            <span class="text-[10px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">Steel Wire Core</span>
+            <h3 class="font-bold text-sm text-white font-heading mt-2 group-hover:text-[#e06d2d] transition leading-snug">
+              Heavy-Duty Timing Belts & Pinch Rollers Kit
+            </h3>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-xl font-extrabold text-white font-mono-tech">$95 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$130</span>
+              <span class="badge-deal">Save 27%</span>
+            </div>
+            <p class="text-[11px] text-[#e06d2d] font-mono-tech font-bold">11,685 BDT • Non-Stretch PU</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button type="button" class="btn-add-to-quote w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs transition shadow-sm flex items-center justify-center gap-1.5" data-id="part-timing-belts">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <button type="button" onclick="openQuickView('part-timing-belts')" class="w-full btn-quick-look font-semibold py-1.5 rounded-lg text-xs transition border border-[#283549]">
+              Quick Look
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-Over Quotation Cart Drawer -->
+  <div id="cart-drawer-overlay" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm opacity-0 cart-drawer-overlay flex justify-end">
+    <div id="cart-drawer" class="w-full max-w-md bg-white h-full shadow-2xl flex flex-col justify-between translate-x-full cart-drawer">
+      
+      <div class="p-4 bg-[#131921] text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-amber-400"></i>
+          <h3 class="font-bold text-sm font-heading">Your Quotation Cart</h3>
+        </div>
+        <button id="btn-close-cart" type="button" class="text-slate-400 hover:text-white p-1 rounded" title="Close">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="cart-drawer-items" class="p-4 overflow-y-auto flex-1 space-y-3"></div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200 space-y-3">
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Price (USD):</span>
+            <span id="cart-drawer-subtotal-usd" class="font-bold text-slate-900 font-heading">$0</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Price (BDT):</span>
+            <span id="cart-drawer-subtotal-bdt" class="font-extrabold text-emerald-600 font-heading">0 BDT</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <button type="button" onclick="sendCartToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-xs transition flex items-center justify-center gap-2 shadow">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Send Quotation to WhatsApp
+          </button>
+          <a href="quote-builder.html" class="w-full block text-center bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-lg text-xs transition shadow">
+            <i class="fa-solid fa-file-invoice-dollar mr-1"></i> Open Official Quote Builder
+          </a>
+          <button type="button" onclick="clearCart()" class="w-full text-slate-500 hover:text-rose-600 text-[11px] font-semibold py-1">
+            Clear Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div id="product-quick-view-modal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <button id="btn-close-quick-view" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl" title="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+        <div class="bg-slate-50 rounded-xl p-4 flex items-center justify-center border border-slate-100 h-64">
+          <img id="qv-image" src="" alt="" class="max-h-full object-contain">
+        </div>
+        <div class="space-y-3 text-xs">
+          <span id="qv-discount-badge" class="badge-deal"></span>
+          <h3 id="qv-title" class="text-lg font-bold text-slate-900 font-heading"></h3>
+          <div class="flex items-baseline gap-2">
+            <span id="qv-price" class="text-2xl font-extrabold text-slate-950 font-heading"></span>
+            <span id="qv-list-price" class="text-xs text-slate-400 line-through"></span>
+          </div>
+          <p id="qv-bdt-price" class="text-xs font-bold text-emerald-600"></p>
+          <p id="qv-desc" class="text-slate-600 text-[11px]"></p>
+          <div>
+            <strong class="text-slate-900 block mb-1">Key Features:</strong>
+            <ul id="qv-specs" class="space-y-1 text-slate-700 text-[11px]"></ul>
+          </div>
+          <div class="pt-3 grid grid-cols-2 gap-2">
+            <button id="qv-add-btn" type="button" class="btn-add-to-quote bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-lg text-xs transition flex items-center justify-center gap-1 shadow">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <a href="quote-builder.html" class="text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center gap-1">
+              <i class="fa-solid fa-calculator"></i> Full Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#080c12] text-slate-400 text-xs pt-12 pb-8 border-t border-[#1c2432] mt-auto font-mono-tech">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[11px]">
+      <p>&copy; 2026 NDIGO TECH SOLUTIONS. All rights reserved. • Dhaka Office: Uttara • Savar Spare Parts Depot</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech%20Solutions!%20I%20need%20spare%20parts." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-emerald-600 transition pulse-whatsapp" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plotters & Cutting Machinery Store | NDIGO TECH SOLUTIONS</title>
+  <meta name="description" content="High-speed G-MAC Smart Plotters, SINHAJET Flatbed Cutters, Vertical Pattern Cutters, Template Cutters, and Fabric Relaxing Machines.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230284c7'/><text y='70' x='50' font-size='60' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold'>N</text></svg>">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-900 antialiased flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 shadow-md">
+    <div class="bg-[#131921] text-white px-3 sm:px-6 py-2.5">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6">
+        
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0 hover:outline hover:outline-1 hover:outline-white p-1 rounded transition">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-sky-500 via-cyan-400 to-emerald-400 flex items-center justify-center text-slate-950 font-extrabold text-xl shadow">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <div>
+            <span class="font-heading text-xl font-bold tracking-tight text-white block leading-none">NDIGO<span class="text-amber-400">TECH</span></span>
+            <span class="text-[10px] tracking-wider text-slate-300 uppercase font-semibold">CAD/CAM Store</span>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-2 shrink-0 hover:outline hover:outline-1 hover:outline-white p-1.5 rounded cursor-pointer transition">
+          <i class="fa-solid fa-location-dot text-amber-400 text-base"></i>
+          <div class="text-xs leading-tight">
+            <span class="text-slate-400 block text-[10px]">Deliver to</span>
+            <span class="font-bold text-white">Dhaka & Savar, BD</span>
+          </div>
+        </div>
+
+        <div class="flex-1 max-w-2xl relative">
+          <div class="flex rounded-md overflow-hidden bg-white amazon-search-shadow transition">
+            <select id="amazon-search-category" class="bg-slate-100 text-slate-700 text-xs px-2.5 py-2 border-r border-slate-300 font-medium focus:outline-none cursor-pointer hidden sm:block">
+              <option value="hardware" selected>Plotters & Cutters</option>
+              <option value="all">All Departments</option>
+              <option value="software">CAD Software</option>
+              <option value="digitizer">Camera Digitizers</option>
+              <option value="spares">Spare Parts</option>
+            </select>
+            <input 
+              id="amazon-global-search" 
+              type="text" 
+              placeholder="Search G-MAC Plotters, Sinhajet Cutters, Vertical Cutters..." 
+              class="w-full px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none"
+              autocomplete="off"
+            >
+            <button type="button" class="bg-amber-400 hover:bg-amber-500 text-slate-950 px-4 flex items-center justify-center transition" title="Search">
+              <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </button>
+          </div>
+          <div id="amazon-search-results" class="hidden absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-2xl border border-slate-200 z-50 max-h-96 overflow-y-auto divide-y divide-slate-100"></div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button type="button" class="btn-open-cart relative flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-lg border border-slate-700 hover:border-amber-400 transition" title="View Quote Cart">
+            <i class="fa-solid fa-cart-shopping text-lg text-amber-400"></i>
+            <span class="hidden sm:inline text-xs font-bold">Quote Cart</span>
+            <span class="cart-count-badge hidden absolute -top-2 -right-2 bg-rose-600 text-white font-extrabold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+          </button>
+          <a href="quote-builder.html" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-3.5 py-2 rounded-lg text-xs transition flex items-center gap-1.5 shadow">
+            <i class="fa-solid fa-calculator"></i>
+            <span class="hidden sm:inline">Quote Builder</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bg-[#232f3e] text-white text-xs px-3 sm:px-6 py-2 overflow-x-auto whitespace-nowrap border-t border-slate-800">
+      <div class="max-w-7xl mx-auto flex items-center gap-4 sm:gap-6 font-medium">
+        <a href="index.html" class="hover:text-amber-400 transition">All Products</a>
+        <a href="software.html" class="hover:text-amber-400 transition">CAD Software</a>
+        <a href="hardware.html" class="text-amber-400 font-bold flex items-center gap-1"><i class="fa-solid fa-chevron-right text-[10px]"></i> Plotters & Cutters</a>
+        <a href="digitizer.html" class="hover:text-amber-400 transition">Camera Digitizers</a>
+        <a href="spare-parts.html" class="hover:text-amber-400 transition">Spare Parts</a>
+        <a href="contact.html" class="hover:text-amber-400 transition">Contact & Support</a>
+        <a href="quote-builder.html" class="text-amber-400 font-bold hover:underline ml-auto flex items-center gap-1">
+          <i class="fa-solid fa-calculator"></i> Make an Instant Quotation
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hardware Banner -->
+  <section class="bg-gradient-to-r from-slate-900 via-slate-900 to-indigo-950 text-white py-12 px-4 relative">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="space-y-2">
+        <span class="badge-best-seller">High-Speed Machinery</span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">High-Speed Inkjet Plotters & Pattern Cutters</h1>
+        <p class="text-slate-300 text-sm max-w-2xl">
+          Fast HP inkjet printing heads, precise servo motors, and strong vacuum suction tables. Comes with 1 to 2 years full warranty and on-site support.
+        </p>
+      </div>
+      <div class="shrink-0 flex gap-3">
+        <button type="button" onclick="openDemoVideo('G-MAC Plotters & Cutters')" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-4 py-2.5 rounded-lg text-xs border border-slate-700 transition flex items-center gap-2">
+          <i class="fa-solid fa-play text-amber-400"></i> Watch Machine Demo
+        </button>
+        <a href="quote-builder.html" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-6 py-2.5 rounded-lg text-xs shadow transition hover:scale-105">
+          <i class="fa-solid fa-calculator mr-1"></i> Build Machine Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Machinery Showcase Grid -->
+  <section class="py-12 bg-slate-100 flex-1">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <!-- Plotter 1: G-MAC Smart Plotter GEN-04 -->
+      <div id="plotters" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="badge-best-seller">#1 Best Seller</span>
+              <span class="badge-choice">NTS<span>Choice</span></span>
+            </div>
+            <label class="flex items-center gap-1 text-xs text-slate-600 cursor-pointer">
+              <input type="checkbox" class="compare-checkbox rounded text-amber-500" data-id="gmac-plotter-gen04">
+              <span>Add to Compare</span>
+            </label>
+          </div>
+
+          <h3 class="text-2xl font-bold text-slate-900 font-heading">G-MAC Smart Plotter GEN-04 (220cm Width)</h3>
+          
+          <div class="flex items-center gap-2">
+            <div class="star-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs text-sky-600 font-semibold">5.0 (210 reviews)</span>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <div class="flex items-baseline gap-2">
+              <span class="text-2xl font-black text-slate-950 font-heading">$3,250 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$3,850</span>
+              <span class="badge-deal">Save 16%</span>
+            </div>
+            <p class="text-xs font-bold text-emerald-600">3,99,750 BDT (1 USD = 123 TK • Ready Stock Delivery)</p>
+          </div>
+
+          <ul class="space-y-1.5 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> 4 HP Inkjet Heads for fast printing (120 to 200 m²/h)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Automatic ink level check & self-cleaning heads</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Free floor stand and motorized paper roll bar</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> <strong>Plotter Machine Delivery from Ready Stock</strong></li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> <strong>One year parts warranty</strong> + <strong>“Two years” service Warranty</strong></li>
+          </ul>
+
+          <div class="pt-3 flex flex-wrap gap-3">
+            <button type="button" class="btn-add-to-quote bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-6 py-2.5 rounded-lg text-xs shadow transition flex items-center gap-1.5" data-id="gmac-plotter-gen04">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote Cart
+            </button>
+            <button type="button" onclick="openQuickView('gmac-plotter-gen04')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold px-4 py-2.5 rounded-lg text-xs transition border border-slate-200">
+              Quick Look
+            </button>
+            <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech!%20I%20am%20interested%20in%20the%20G-MAC%20GEN-04%20Plotter." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-lg text-xs transition flex items-center gap-1.5 shadow">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="rounded-xl overflow-hidden bg-slate-50 p-4 border border-slate-200 text-center">
+            <img src="assets/images/products/gmac-gen04-plotter.png" alt="G-MAC Plotter" class="w-full h-64 object-contain">
+          </div>
+        </div>
+      </div>
+
+      <!-- Cutter 1: SINHAJET FG1512 Flat-Bed Cutter -->
+      <div id="sinhajet" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="badge-best-seller">#1 Best Seller</span>
+              <span class="badge-deal">High Accuracy</span>
+            </div>
+            <label class="flex items-center gap-1 text-xs text-slate-600 cursor-pointer">
+              <input type="checkbox" class="compare-checkbox rounded text-amber-500" data-id="sinhajet-fg1512">
+              <span>Add to Compare</span>
+            </label>
+          </div>
+
+          <h3 class="text-2xl font-bold text-slate-900 font-heading">SINHAJET FG1512 Flat-Bed Pattern Cutter</h3>
+
+          <div class="flex items-center gap-2">
+            <div class="star-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs text-sky-600 font-semibold">5.0 (175 reviews)</span>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <div class="flex items-baseline gap-2">
+              <span class="text-2xl font-black text-slate-950 font-heading">$6,500 <span class="text-xs font-normal text-slate-500">USD</span></span>
+              <span class="text-xs text-slate-400 line-through">$7,800</span>
+              <span class="badge-deal">Save 17%</span>
+            </div>
+            <p class="text-xs font-bold text-emerald-600">7,99,500 BDT (Two Year Parts Warranty + “Two Years” Service Warranty)</p>
+          </div>
+
+          <ul class="space-y-1.5 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Big Table Size: 1500 x 1200 mm with strong vacuum suction</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Dual HP45 Ink Pen + Strong Alloy Knife for hard Kraft paper</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Fast cutting speed up to 1200 mm/s with smooth servo drive</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> <strong>Cutter Machine Two year parts warranty</strong></li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> <strong>Plotter and Cutter Machine “Two years” service Warranty</strong></li>
+          </ul>
+
+          <div class="pt-3 flex flex-wrap gap-3">
+            <button type="button" class="btn-add-to-quote bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-6 py-2.5 rounded-lg text-xs shadow transition flex items-center gap-1.5" data-id="sinhajet-fg1512">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote Cart
+            </button>
+            <button type="button" onclick="openQuickView('sinhajet-fg1512')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold px-4 py-2.5 rounded-lg text-xs transition border border-slate-200">
+              Quick Look
+            </button>
+            <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech!%20I%20am%20interested%20in%20SINHAJET%20FG1512%20Cutter." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-lg text-xs transition flex items-center gap-1.5 shadow">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="rounded-xl overflow-hidden bg-slate-50 p-4 border border-slate-200 text-center">
+            <img src="assets/images/products/sinhajet-fg1512-cutter.png" alt="Sinhajet Cutter" class="w-full h-64 object-contain">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-Over Quotation Cart Drawer -->
+  <div id="cart-drawer-overlay" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm opacity-0 cart-drawer-overlay flex justify-end">
+    <div id="cart-drawer" class="w-full max-w-md bg-white h-full shadow-2xl flex flex-col justify-between translate-x-full cart-drawer">
+      
+      <div class="p-4 bg-[#131921] text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-amber-400"></i>
+          <h3 class="font-bold text-sm font-heading">Your Quotation Cart</h3>
+        </div>
+        <button id="btn-close-cart" type="button" class="text-slate-400 hover:text-white p-1 rounded" title="Close">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="cart-drawer-items" class="p-4 overflow-y-auto flex-1 space-y-3"></div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200 space-y-3">
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Price (USD):</span>
+            <span id="cart-drawer-subtotal-usd" class="font-bold text-slate-900 font-heading">$0</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Price (BDT):</span>
+            <span id="cart-drawer-subtotal-bdt" class="font-extrabold text-emerald-600 font-heading">0 BDT</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <button type="button" onclick="sendCartToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-xs transition flex items-center justify-center gap-2 shadow">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Send Quotation to WhatsApp
+          </button>
+          <a href="quote-builder.html" class="w-full block text-center bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-lg text-xs transition shadow">
+            <i class="fa-solid fa-file-invoice-dollar mr-1"></i> Open Official Quote Builder
+          </a>
+          <button type="button" onclick="clearCart()" class="w-full text-slate-500 hover:text-rose-600 text-[11px] font-semibold py-1">
+            Clear Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Compare Bottom Bar -->
+  <div id="compare-floating-bar" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-950 text-white px-6 py-3 rounded-full shadow-2xl border border-slate-800 flex items-center gap-4 text-xs font-semibold translate-y-24 opacity-0 compare-floating-bar">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-code-compare text-amber-400 text-base"></i>
+      <span><strong id="compare-item-count" class="text-amber-400">0</strong> machines selected to compare</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button type="button" onclick="openCompareModal()" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-4 py-1.5 rounded-full transition">
+        Compare Now
+      </button>
+      <button type="button" onclick="clearCompareList()" class="text-slate-400 hover:text-white text-xs px-2" title="Clear">
+        Clear
+      </button>
+    </div>
+  </div>
+
+  <!-- Side-by-Side Compare Matrix Modal -->
+  <div id="compare-matrix-modal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full p-6 relative shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-4 mb-4 border-b border-slate-200">
+        <h3 class="text-lg font-bold text-slate-900 font-heading">Machine Technical Comparison Matrix</h3>
+        <button id="btn-close-compare" type="button" class="text-slate-400 hover:text-slate-700 text-xl" title="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="compare-table-container" class="overflow-x-auto"></div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div id="product-quick-view-modal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <button id="btn-close-quick-view" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl" title="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+        <div class="bg-slate-50 rounded-xl p-4 flex items-center justify-center border border-slate-100 h-64">
+          <img id="qv-image" src="" alt="" class="max-h-full object-contain">
+        </div>
+        <div class="space-y-3 text-xs">
+          <span id="qv-discount-badge" class="badge-deal"></span>
+          <h3 id="qv-title" class="text-lg font-bold text-slate-900 font-heading"></h3>
+          <div class="flex items-baseline gap-2">
+            <span id="qv-price" class="text-2xl font-extrabold text-slate-950 font-heading"></span>
+            <span id="qv-list-price" class="text-xs text-slate-400 line-through"></span>
+          </div>
+          <p id="qv-bdt-price" class="text-xs font-bold text-emerald-600"></p>
+          <p id="qv-desc" class="text-slate-600 text-[11px]"></p>
+          <div>
+            <strong class="text-slate-900 block mb-1">Key Features:</strong>
+            <ul id="qv-specs" class="space-y-1 text-slate-700 text-[11px]"></ul>
+          </div>
+          <div class="pt-3 grid grid-cols-2 gap-2">
+            <button id="qv-add-btn" type="button" class="btn-add-to-quote bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-lg text-xs transition flex items-center justify-center gap-1 shadow">
+              <i class="fa-solid fa-cart-plus"></i> Add to Quote
+            </button>
+            <a href="quote-builder.html" class="text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center gap-1">
+              <i class="fa-solid fa-calculator"></i> Full Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Machine Video Demonstration Modal -->
+  <div id="demo-video-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 text-white rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl border border-slate-800">
+      <div class="flex justify-between items-center pb-3 mb-4 border-b border-slate-800">
+        <h3 id="demo-video-title" class="text-base font-bold font-heading text-amber-400">Live Operation Demo</h3>
+        <button id="btn-close-demo-video" type="button" class="text-slate-400 hover:text-white text-xl" title="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="aspect-video bg-slate-950 rounded-xl overflow-hidden flex flex-col items-center justify-center border border-slate-800 p-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-amber-400/20 text-amber-400 flex items-center justify-center text-2xl mb-3 animate-pulse">
+          <i class="fa-solid fa-play"></i>
+        </div>
+        <h4 class="text-sm font-bold text-white">Live On-Site Video Demonstration</h4>
+        <p class="text-xs text-slate-400 mt-1 max-w-sm">
+          Call our Uttara demo center at <strong>+88 01770-082829</strong> to arrange a live hands-on machine trial for your sample room team!
+        </p>
+        <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech!%20Please%20send%20me%20live%20video%20demos%20of%20your%20plotters%20and%20cutters." target="_blank" class="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp"></i> Request Video on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#131921] text-slate-400 text-xs pt-12 pb-8 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[11px]">
+      <p>&copy; 2026 NDIGO TECH SOLUTIONS. All rights reserved. • Dhaka Office: Uttara • Savar Spare Parts Depot</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/8801770082829?text=Hello%20NDIGO%20Tech%20Solutions!%20I%20am%20interested%20in%20Plotters%20and%20Cutters." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-emerald-600 transition pulse-whatsapp" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
