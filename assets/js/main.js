@@ -1071,7 +1071,13 @@ function initHeroAutoSlider() {
     currentIndex = ((index % slides.length) + slides.length) % slides.length;
 
     slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === currentIndex);
+      if (i === currentIndex) {
+        slide.classList.add('active');
+        slide.style.display = 'block';
+      } else {
+        slide.classList.remove('active');
+        slide.style.display = 'none';
+      }
     });
 
     dots.forEach((dot, i) => {

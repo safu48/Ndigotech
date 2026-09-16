@@ -12,6 +12,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Slider override (must be after Tailwind CDN) -->
+  <style>
+    .bestseller-slide { display: none !important; }
+    .bestseller-slide.active { display: block !important; animation: slideIn 0.4s ease; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+
 </head>
 <body class="bg-white text-slate-900 antialiased flex flex-col min-h-screen font-body">
 
