@@ -1111,8 +1111,9 @@ function initHeroAutoSlider() {
 
   dots.forEach(dot => {
     dot.addEventListener('click', (e) => {
-      const slideIdx = parseInt(e.target.getAttribute('data-slide') || '0', 10);
-      goToSlide(slideIdx);
+      // dots use data-index attribute
+      const slideIdx = parseInt(e.target.getAttribute('data-index') ?? e.target.getAttribute('data-slide') ?? '0', 10);
+      goToSlide(isNaN(slideIdx) ? 0 : slideIdx);
       startAutoSlide();
     });
   });
