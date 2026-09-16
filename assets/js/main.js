@@ -974,16 +974,13 @@ function initProductDetailsPage() {
   }
 
   // Pre-fill WhatsApp Contact Button
-  const waMsg = encodeURIComponent(`Hello NDIGO TECH SOLUTIONS! I am interested in purchasing/inquiring about: ${product.name} (Official Price: ৳ ${bdtPrice.toLocaleString('en-IN')} / $${formattedUsd} USD). Please provide technical details and delivery time.`);
-  const waUrl = `https://wa.me/8801770082829?text=${waMsg}`;
-
   const btnWa = document.getElementById('btn-whatsapp-owner');
   const btnHeaderWa = document.getElementById('header-whatsapp-link');
   const btnFloatingWa = document.getElementById('floating-whatsapp-link');
 
-  if (btnWa) btnWa.href = waUrl;
-  if (btnHeaderWa) btnHeaderWa.href = waUrl;
-  if (btnFloatingWa) btnFloatingWa.href = waUrl;
+  if (btnWa) btnWa.href = waInquiryUrl;
+  if (btnHeaderWa) btnHeaderWa.href = waInquiryUrl;
+  if (btnFloatingWa) btnFloatingWa.href = waInquiryUrl;
 
   // Technical Specifications Table
   const specsContainer = document.getElementById('specs-table-container');
