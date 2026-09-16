@@ -1070,7 +1070,9 @@ function initHeroAutoSlider() {
 
   function goToSlide(index) {
     currentIndex = (index + totalSlides) % totalSlides;
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // Track is 300% wide (3 slides). Each slide = 100%/3 of track.
+    // Move by currentIndex * (100/totalSlides)% of track width.
+    track.style.transform = `translateX(-${currentIndex * (100 / totalSlides)}%)`;
 
     dots.forEach((dot, idx) => {
       if (idx === currentIndex) {
