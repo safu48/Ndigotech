@@ -14,94 +14,172 @@
     let width = container.clientWidth || (container.parentElement ? container.parentElement.clientWidth : 0) || window.innerWidth || 1200;
     let height = container.clientHeight || (container.parentElement ? container.parentElement.clientHeight : 0) || 520;
 
-    // 1. Scene, Camera & Renderer
+    // 1. Scene, Camera & Renderer Setup
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0a0f1d, 0.035);
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.set(0, 5, 16);
+    camera.position.set(0, 4.5, 15);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+
     container.innerHTML = '';
     container.appendChild(renderer.domElement);
 
-    // 2. Lighting Setup
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    // 2. High Contrast Lighting Setup
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0x0ea5e9, 2.0);
-    keyLight.position.set(8, 12, 10);
+    const keyLight = new THREE.DirectionalLight(0x0ea5e9, 2.2);
+    keyLight.position.set(8, 14, 10);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xf59e0b, 1.2);
-    fillLight.position.set(-10, 8, -5);
-    scene.add(fillLight);
+    const emeraldRim = new THREE.DirectionalLight(0x10b981, 1.8);
+    emeraldRim.position.set(-10, 8, -6);
+    scene.add(emeraldRim);
 
-    const laserLight = new THREE.PointLight(0x10b981, 2, 8);
-    laserLight.position.set(0, 1.5, 0);
+    const laserLight = new THREE.PointLight(0x10b981, 2.5, 9);
+    laserLight.position.set(0, 1.8, 0);
     scene.add(laserLight);
 
-    // 3. 3D Plotter Machine Group
+    // 3. Helper for CAD Edge Lines
+    function addEdgeLines(mesh, color = 0x334155) {
+      try {
+        const edges = new THREE.EdgesGeometry(mesh.geometry, 28);
+        const lineMat = new THREE.LineBasicMaterial({ color: color, linewidth: 1, transparent: true, opacity: 0.5 });
+        const lines = new THREE.LineSegments(edges, lineMat);
+        mesh.add(lines);
+      } catch (e) {}
+    }
+
+    // 4. Procedural CAD Marker Paper Texture for Hero Plotter
+    function createHeroMarkerTexture() {
+      const cv = document.createElement('canvas');
+      cv.width = 1024;
+      cv.height = 512;
+      const ctx = cv.getContext('2d');
+
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillRect(0, 0, 1024, 512);
+
+      // Border and ruler marks
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(12, 12, 1000, 488);
+
+      // Grid guide dots
+      ctx.fillStyle = '#cbd5e1';
+      for (let x = 24; x < 1024; x += 48) {
+        for (let y = 24; y < 512; y += 48) {
+          ctx.fillRect(x, y, 2, 2);
+        }
+      }
+
+      // Garment pattern contours
+      function drawPattern(pts, name, strokeCol) {
+        ctx.beginPath();
+        pts.forEach((p, i) => { if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]); });
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.08)';
+        ctx.fill();
+        ctx.strokeStyle = strokeCol;
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        ctx.fillStyle = '#0f172a';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.fillText(name, pts[0][0] + 10, pts[0][1] + 35);
+      }
+
+      drawPattern([[40, 50], [200, 50], [220, 150], [190, 420], [110, 430], [50, 360]], 'PANTS_FRONT #01', '#0369a1');
+      drawPattern([[240, 45], [400, 45], [420, 160], [380, 440], [300, 450], [250, 380]], 'PANTS_BACK #02', '#0369a1');
+      drawPattern([[450, 60], [600, 60], [620, 160], [590, 400], [460, 400]], 'JACKET_BODY #03', '#059669');
+      drawPattern([[650, 60], [750, 40], [850, 60], [830, 260], [670, 260]], 'SLEEVE_L #04', '#0f172a');
+
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 13px monospace';
+      ctx.fillText('NDIGO CAD HIGH-SPEED PLOTTER • 220CM INDUSTRIAL BED', 50, 480);
+
+      const tex = new THREE.CanvasTexture(cv);
+      tex.anisotropy = 4;
+      return tex;
+    }
+
+    // 5. 3D Plotter Machine Group (Shifted & Scaled to be clearly visible)
     const plotterGroup = new THREE.Group();
-    plotterGroup.position.set(2, -1.2, 0);
-    plotterGroup.rotation.y = -0.35;
-    plotterGroup.rotation.x = 0.15;
+    plotterGroup.position.set(1.8, -0.6, -1.0);
+    plotterGroup.scale.set(0.95, 0.95, 0.95);
+    plotterGroup.rotation.y = -0.32;
+    plotterGroup.rotation.x = 0.16;
     scene.add(plotterGroup);
 
-    // Machine Stand & Body
+    // Machine Stand & Body Materials
     const darkMetalMat = new THREE.MeshStandardMaterial({
       color: 0x1e293b,
       metalness: 0.85,
       roughness: 0.25
     });
 
-    const blueAccentMat = new THREE.MeshStandardMaterial({
-      color: 0x0284c7,
-      metalness: 0.7,
+    const emeraldAccentMat = new THREE.MeshStandardMaterial({
+      color: 0x059669,
+      metalness: 0.65,
       roughness: 0.3
     });
 
-    const whiteMat = new THREE.MeshStandardMaterial({
-      color: 0xf8fafc,
-      metalness: 0.1,
-      roughness: 0.4
+    const chromeMat = new THREE.MeshStandardMaterial({
+      color: 0xf1f5f9,
+      metalness: 0.95,
+      roughness: 0.08
     });
 
-    const paperMat = new THREE.MeshStandardMaterial({
-      color: 0xfffbeb,
-      metalness: 0.05,
-      roughness: 0.85
-    });
-
-    // Plotter Main Table / Bed
+    // Plotter Main Table Bed
     const bedGeo = new THREE.BoxGeometry(8.5, 0.3, 3.2);
     const bedMesh = new THREE.Mesh(bedGeo, darkMetalMat);
     bedMesh.position.y = 0;
+    addEdgeLines(bedMesh);
     plotterGroup.add(bedMesh);
 
-    // Paper Surface on Bed
-    const paperGeo = new THREE.PlaneGeometry(7.8, 2.6);
-    const paperMesh = new THREE.Mesh(paperGeo, paperMat);
+    // Printed CAD Garment Paper Surface
+    const paperGeo = new THREE.PlaneGeometry(7.9, 2.7);
+    const paperMesh = new THREE.Mesh(paperGeo, new THREE.MeshStandardMaterial({
+      map: createHeroMarkerTexture(),
+      roughness: 0.8,
+      metalness: 0.05
+    }));
     paperMesh.rotation.x = -Math.PI / 2;
     paperMesh.position.y = 0.16;
     plotterGroup.add(paperMesh);
 
     // Legs / Stands
-    const legMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.9, roughness: 0.2 });
     const legGeo = new THREE.BoxGeometry(0.35, 2.8, 2.2);
-    const leftLeg = new THREE.Mesh(legGeo, legMat);
+    const leftLeg = new THREE.Mesh(legGeo, darkMetalMat);
     leftLeg.position.set(-3.8, -1.4, 0);
     const rightLeg = leftLeg.clone();
     rightLeg.position.x = 3.8;
+    addEdgeLines(leftLeg); addEdgeLines(rightLeg);
     plotterGroup.add(leftLeg, rightLeg);
 
-    // Plotter Rail / Gantry
+    // Lower Cross-Brace Bar
+    const crossBar = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 7.6, 16), chromeMat);
+    crossBar.rotateZ(Math.PI / 2);
+    crossBar.position.set(0, -1.8, 0);
+    plotterGroup.add(crossBar);
+
+    // Kraft Paper Roll
+    const rollGeo = new THREE.CylinderGeometry(0.25, 0.25, 7.6, 32);
+    rollGeo.rotateZ(Math.PI / 2);
+    const rollMesh = new THREE.Mesh(rollGeo, new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.7 }));
+    rollMesh.position.set(0, -1.2, -0.4);
+    plotterGroup.add(rollMesh);
+
+    // Plotter Rail / Gantry (Polished Chrome)
     const railGeo = new THREE.CylinderGeometry(0.08, 0.08, 8.2, 16);
     railGeo.rotateZ(Math.PI / 2);
-    const rail1 = new THREE.Mesh(railGeo, blueAccentMat);
+    const rail1 = new THREE.Mesh(railGeo, chromeMat);
     rail1.position.set(0, 0.85, -0.4);
     const rail2 = rail1.clone();
     rail2.position.set(0, 0.85, 0.4);
@@ -109,38 +187,40 @@
 
     // Gantry Side Towers
     const towerGeo = new THREE.BoxGeometry(0.6, 1.2, 1.4);
-    const leftTower = new THREE.Mesh(towerGeo, darkMetalMat);
+    const leftTower = new THREE.Mesh(towerGeo, emeraldAccentMat);
     leftTower.position.set(-4.0, 0.6, 0);
     const rightTower = leftTower.clone();
     rightTower.position.x = 4.0;
+    addEdgeLines(leftTower, 0x047857); addEdgeLines(rightTower, 0x047857);
     plotterGroup.add(leftTower, rightTower);
 
-    // Moving Printhead / Cutter Carriage Assembly
+    // Moving Printhead Carriage Assembly
     const carriageGroup = new THREE.Group();
     carriageGroup.position.set(0, 0.85, 0);
     plotterGroup.add(carriageGroup);
 
-    const carriageBoxGeo = new THREE.BoxGeometry(1.1, 0.7, 1.0);
-    const carriageBox = new THREE.Mesh(carriageBoxGeo, blueAccentMat);
+    const carriageBoxGeo = new THREE.BoxGeometry(1.2, 0.75, 1.0);
+    const carriageBox = new THREE.Mesh(carriageBoxGeo, emeraldAccentMat);
+    addEdgeLines(carriageBox, 0x047857);
     carriageGroup.add(carriageBox);
 
     // Dual HP45 Head blocks
-    const hpHeadGeo = new THREE.BoxGeometry(0.22, 0.45, 0.3);
+    const hpHeadGeo = new THREE.BoxGeometry(0.24, 0.48, 0.32);
     const hpMat = new THREE.MeshStandardMaterial({ color: 0x020617, roughness: 0.3 });
     const head1 = new THREE.Mesh(hpHeadGeo, hpMat);
-    head1.position.set(-0.2, -0.4, 0);
+    head1.position.set(-0.24, -0.4, 0);
     const head2 = head1.clone();
-    head2.position.x = 0.2;
+    head2.position.x = 0.24;
     carriageGroup.add(head1, head2);
 
-    // Laser / Ink Spray Effect Line
-    const laserMat = new THREE.LineBasicMaterial({ color: 0x10b981, linewidth: 2, transparent: true, opacity: 0.85 });
+    // Laser / Ink Spray Guide Line
+    const laserMat = new THREE.LineBasicMaterial({ color: 0x10b981, linewidth: 2.5, transparent: true, opacity: 0.9 });
     const laserPoints = [new THREE.Vector3(0, -0.6, 0), new THREE.Vector3(0, -0.85, 0)];
     const laserGeo = new THREE.BufferGeometry().setFromPoints(laserPoints);
     const laserLine = new THREE.Line(laserGeo, laserMat);
     carriageGroup.add(laserLine);
 
-    // 4. Floating 3D CAD Garment Patterns
+    // 6. Floating 3D CAD Garment Patterns
     const cadGroup = new THREE.Group();
     scene.add(cadGroup);
 
@@ -153,7 +233,7 @@
       shape.closePath();
 
       const edges = new THREE.EdgesGeometry(new THREE.ShapeGeometry(shape));
-      const lineMat = new THREE.LineBasicMaterial({ color: color, linewidth: 2, transparent: true, opacity: 0.75 });
+      const lineMat = new THREE.LineBasicMaterial({ color: color, linewidth: 2.5, transparent: true, opacity: 0.85 });
       const line = new THREE.LineSegments(edges, lineMat);
       line.position.set(x, y, z);
       line.scale.set(scale, scale, scale);
@@ -162,27 +242,27 @@
 
     // Pattern 1: Garment Bodice Contour
     const bodicePts = [[-1.2, 0], [-1.4, 1.8], [-0.7, 2.3], [0, 1.8], [0.7, 2.3], [1.4, 1.8], [1.2, 0], [0, 0.2]];
-    const cadBodice = createCADWireframe(bodicePts, 0x38bdf8, -4.5, 1.2, 2, 0.9);
+    const cadBodice = createCADWireframe(bodicePts, 0x0284c7, -5.2, 1.6, 1.5, 0.95);
     cadGroup.add(cadBodice);
 
     // Pattern 2: Sleeve Curved Pattern
     const sleevePts = [[-1.5, 0], [-1.2, 1.4], [-0.5, 1.9], [0.5, 1.9], [1.2, 1.4], [1.5, 0], [0, 0.1]];
-    const cadSleeve = createCADWireframe(sleevePts, 0xf59e0b, 5.0, 2.5, -2, 0.85);
+    const cadSleeve = createCADWireframe(sleevePts, 0x4f46e5, 5.2, 2.8, -1.8, 0.9);
     cadGroup.add(cadSleeve);
 
     // Pattern 3: Footwear Pattern Sole & Upper
     const shoePts = [[-1.8, 0], [-1.2, 0.8], [0.4, 0.8], [1.8, 0.3], [1.6, -0.4], [0, -0.4], [-1.6, -0.2]];
-    const cadFootwear = createCADWireframe(shoePts, 0x10b981, -3.2, 3.8, -3, 0.75);
+    const cadFootwear = createCADWireframe(shoePts, 0x059669, -3.8, 3.8, -2.5, 0.8);
     cadGroup.add(cadFootwear);
 
-    // 5. Tech Particle Grid Field
+    // 7. Tech Particle Grid Field
     const particleCount = 450;
     const particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const c1 = new THREE.Color(0x38bdf8); // Cyan
-    const c2 = new THREE.Color(0xf59e0b); // Amber
+    const c1 = new THREE.Color(0x0284c7); // Cyan
+    const c2 = new THREE.Color(0x4f46e5); // Indigo Tech
     const c3 = new THREE.Color(0x10b981); // Emerald
 
     for (let i = 0; i < particleCount; i++) {
@@ -201,21 +281,21 @@
     particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const particleMat = new THREE.PointsMaterial({
-      size: 0.18,
+      size: 0.2,
       vertexColors: true,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.7,
       blending: THREE.AdditiveBlending
     });
 
     const particleField = new THREE.Points(particleGeo, particleMat);
     scene.add(particleField);
 
-    // 6. Interactive Mouse Motion & Parallax
+    // 8. Interactive Mouse Motion & Parallax
     let mouseX = 0;
     let mouseY = 0;
     let targetCameraX = 0;
-    let targetCameraY = 5;
+    let targetCameraY = 4.5;
 
     function onMouseMove(e) {
       const normX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -226,7 +306,7 @@
 
     window.addEventListener('mousemove', onMouseMove, { passive: true });
 
-    // 7. Animation Loop with Intersection Observer for 60FPS efficiency
+    // 9. Animation Loop with Intersection Observer
     let carriageDir = 1;
     let clock = new THREE.Clock();
     let isVisible = true;
@@ -256,16 +336,16 @@
         carriageDir = 1;
       }
 
-      laserLight.position.x = carriageGroup.position.x;
+      laserLight.position.x = carriageGroup.position.x + 1.8;
       laserLine.scale.y = 0.8 + Math.sin(elapsedTime * 20) * 0.2;
 
       // Floating CAD Patterns
       cadBodice.rotation.y = elapsedTime * 0.4;
-      cadBodice.position.y = 1.2 + Math.sin(elapsedTime * 1.2) * 0.3;
+      cadBodice.position.y = 1.6 + Math.sin(elapsedTime * 1.2) * 0.3;
 
       cadSleeve.rotation.y = -elapsedTime * 0.35;
       cadSleeve.rotation.z = Math.sin(elapsedTime * 0.8) * 0.2;
-      cadSleeve.position.y = 2.5 + Math.cos(elapsedTime * 1.5) * 0.35;
+      cadSleeve.position.y = 2.8 + Math.cos(elapsedTime * 1.5) * 0.35;
 
       cadFootwear.rotation.x = elapsedTime * 0.3;
       cadFootwear.rotation.y = elapsedTime * 0.5;
@@ -274,8 +354,8 @@
       particleField.rotation.y = elapsedTime * 0.03;
 
       // Camera Parallax
-      targetCameraX = mouseX * 2.5;
-      targetCameraY = 5 + mouseY * 1.5;
+      targetCameraX = mouseX * 2.2;
+      targetCameraY = 4.5 + mouseY * 1.2;
       camera.position.x += (targetCameraX - camera.position.x) * 0.05;
       camera.position.y += (targetCameraY - camera.position.y) * 0.05;
       camera.lookAt(0, 0.5, 0);

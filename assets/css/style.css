@@ -1,29 +1,22 @@
-/* NDIGO TECH SOLUTIONS - High-Impact Industrial Editorial Styling (Apocalypse & Brigade Aesthetic) */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+/* NDIGO TECH SOLUTIONS - Clean Modern Industrial Styling */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --ac-orange: #e06d2d;
-  --ac-orange-hover: #c95c20;
-  --ac-dark: #0c1017;
-  --ac-surface: #121822;
-  --ac-card: #161e2b;
-  --ac-card-hover: #1c2637;
-  --ac-border: #232e40;
-  --ac-border-subtle: #19212e;
-  --accent-cyan: #38bdf8;
+  --brand-dark: #0f172a;
+  --brand-nav: #ffffff;
+  --brand-accent: #059669; /* Tech Emerald */
+  --brand-accent-hover: #047857;
+  --brand-btn: #059669;
+  --brand-btn-hover: #047857;
+  --primary-blue: #0284c7;
+  --accent-cyan: #06b6d4;
   --accent-emerald: #10b981;
-  --amazon-dark: #0c1017;
-  --amazon-nav: #121822;
-  --amazon-yellow: #e06d2d;
-  --amazon-orange: #e06d2d;
-  --amazon-btn: #e06d2d;
-  --amazon-btn-hover: #c95c20;
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
-  color: #e2e8f0;
-  background-color: #0c1017;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #0f172a;
+  background-color: #ffffff;
   overflow-x: hidden;
 }
 
@@ -31,162 +24,14 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: 'Space Grotesk', sans-serif;
 }
 
-.font-bebas {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 0.04em;
-}
-
-.font-mono-tech {
-  font-family: 'DM Mono', monospace;
-}
-
-.font-body {
-  font-family: 'DM Sans', sans-serif;
-}
-
-/* Apocalypse & Brigade Tactical Badges */
-.badge-tech-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  background: rgba(224, 109, 45, 0.12);
-  color: #e06d2d;
-  border: 1px solid rgba(224, 109, 45, 0.3);
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.badge-dark-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  background: #1c2533;
-  color: #94a3b8;
-  border: 1px solid #283549;
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Apocalypse Coffee Signature Buttons */
-.btn-apocalypse-primary {
-  background: #e06d2d;
-  color: #ffffff;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 14px rgba(224, 109, 45, 0.35);
-}
-.btn-apocalypse-primary:hover {
-  background: #c95c20;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(224, 109, 45, 0.5);
-}
-
-.btn-apocalypse-ghost {
-  background: rgba(22, 30, 43, 0.8);
-  color: #f1f5f9;
-  border: 1px solid #283549;
-  font-weight: 600;
-  transition: all 0.25s ease;
-}
-.btn-apocalypse-ghost:hover {
-  border-color: #e06d2d;
-  color: #ffffff;
-  background: #1c2533;
-}
-
-/* Apocalypse & Brigade Product Cards Styling */
-.home-product-card {
-  background-color: #161e2b !important;
-  border: 1px solid #232e40 !important;
-  color: #cbd5e1 !important;
-}
-
-.home-product-card h4 {
-  color: #ffffff !important;
-  font-family: 'Space Grotesk', sans-serif;
-}
-
-.home-product-card:hover {
-  border-color: #e06d2d !important;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 15px rgba(224, 109, 45, 0.15) !important;
-}
-
-.home-product-card .product-image-frame {
-  background-color: #ffffff !important;
-  border-color: #232e40 !important;
-}
-
-/* Apocalypse Burnt Orange Action Buttons */
-.btn-add-to-quote, .btn-primary-action {
-  background-color: #e06d2d !important;
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.03em !important;
-  border: none !important;
-  transition: all 0.25s ease !important;
-}
-
-.btn-add-to-quote:hover, .btn-primary-action:hover {
-  background-color: #c95c20 !important;
-  box-shadow: 0 4px 14px rgba(224, 109, 45, 0.45) !important;
-  transform: translateY(-1px);
-}
-
-.btn-quick-look {
-  background-color: #1c2533 !important;
-  color: #cbd5e1 !important;
-  border: 1px solid #283549 !important;
-  transition: all 0.2s ease !important;
-}
-
-.btn-quick-look:hover {
-  background-color: #263346 !important;
-  color: #ffffff !important;
-  border-color: #e06d2d !important;
-}
-
-/* Apocalypse / Brigade Filter Tabs */
-.home-filter-tab {
-  background-color: #161e2b !important;
-  color: #94a3b8 !important;
-  border: 1px solid #232e40 !important;
-  font-family: 'DM Mono', monospace !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.04em !important;
-  font-size: 11px !important;
-}
-
-.home-filter-tab:hover {
-  border-color: #e06d2d !important;
-  color: #ffffff !important;
-}
-
-.home-filter-tab.active, .home-filter-tab.bg-slate-900 {
-  background-color: #e06d2d !important;
-  border-color: #e06d2d !important;
-  color: #ffffff !important;
-  box-shadow: 0 2px 10px rgba(224, 109, 45, 0.4) !important;
-}
-
-/* Amazon E-Commerce Header & Search Bar */
+/* Modern Clean Search Bar Focus */
 .amazon-search-shadow:focus-within {
-  box-shadow: 0 0 0 3px rgba(224, 109, 45, 0.5);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.3);
 }
 
-/* Amazon-Style Badges */
+/* Modern Tech Badges (Emerald / High-Contrast) */
 .badge-best-seller {
-  background: #e67a00;
+  background: #059669;
   color: #ffffff;
   font-size: 10px;
   font-weight: 800;
@@ -201,7 +46,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   position: absolute;
   right: -8px;
   top: 0;
-  border-left: 8px solid #e67a00;
+  border-left: 8px solid #059669;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
@@ -218,7 +63,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   gap: 4px;
 }
 .badge-choice span {
-  color: #febd69;
+  color: #10b981;
 }
 
 .badge-deal {
@@ -232,7 +77,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* Amazon-Style Stars & Ratings */
 .star-rating {
-  color: #f59e0b;
+  color: #eab308;
   font-size: 13px;
   display: inline-flex;
   align-items: center;
@@ -294,7 +139,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 .carousel-dot.active {
   width: 28px;
-  background-color: #f59e0b;
+  background-color: #059669;
 }
 
 /* Slide-Over Cart Drawer */
@@ -348,7 +193,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* Range Slider Styling */
 input[type="range"] {
-  accent-color: #f59e0b;
+  accent-color: #059669;
 }
 
 /* Floating WhatsApp Pulse */
@@ -473,54 +318,6 @@ input[type="range"] {
   z-index: 10;
 }
 
-/* Square Product Image Frames (Matches square & 4:3 product photography) */
-.product-image-frame {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background-color: #ffffff;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-  border: 1px solid #f1f5f9;
-}
-
-.product-image-frame img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.product-image-frame-hero {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  max-height: 280px;
-  background-color: #f8fafc;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  border: 1px solid #f1f5f9;
-}
-
-.product-image-frame-hero img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 /* 3D Perspective Card Layers */
 .tilt-3d, .home-product-card {
   transform-style: preserve-3d;
@@ -553,11 +350,13 @@ input[type="range"] {
 #machinery-3d-viewport {
   position: relative;
   width: 100%;
-  height: 520px;
-  background: radial-gradient(circle at center, #1e293b 0%, #0a0f1d 75%);
+  height: 540px;
+  background: radial-gradient(circle at center, #0f172a 0%, #090d16 65%, #020617 100%);
+  border: 1px solid #334155;
   border-radius: 1rem;
   overflow: hidden;
   cursor: grab;
+  box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.7), 0 12px 30px -6px rgba(15, 23, 42, 0.4);
 }
 
 #machinery-3d-viewport:active {
@@ -575,80 +374,89 @@ input[type="range"] {
   position: absolute;
   top: 0;
   left: 0;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: #0284c7;
+  background: #059669;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   cursor: pointer;
   z-index: 20;
   pointer-events: auto;
-  box-shadow: 0 0 15px rgba(2, 132, 199, 0.8);
-  transition: transform 0.2s ease, background-color 0.2s;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: scale 0.2s ease, background-color 0.2s, box-shadow 0.2s;
+  will-change: transform;
 }
 
 .hotspot-3d-pin:hover {
-  transform: translate(-50%, -50%) scale(1.25) !important;
-  background: #f59e0b;
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.9);
+  scale: 1.2;
+  background: #10b981;
+  box-shadow: 0 0 28px rgba(16, 185, 129, 1.0);
+}
+
+.hotspot-3d-pin:active {
+  scale: 0.95;
 }
 
 .hotspot-pulse {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 2px solid rgba(2, 132, 199, 0.6);
+  border: 2px solid rgba(16, 185, 129, 0.7);
   animation: hotspot-pulse-anim 2s infinite ease-out;
   pointer-events: none;
 }
 
 @keyframes hotspot-pulse-anim {
   0% { transform: scale(0.8); opacity: 1; }
-  100% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.9); opacity: 0; }
 }
 
 /* Hotspot Tooltip Popover */
 .hotspot-tooltip {
   position: absolute;
-  bottom: 34px;
+  bottom: 38px;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  width: 220px;
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  padding: 10px 12px;
-  border-radius: 8px;
+  width: 260px;
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid #334155;
+  padding: 12px 14px;
+  border-radius: 10px;
   color: #f8fafc;
-  font-size: 11px;
-  line-height: 1.4;
+  font-size: 11.5px;
+  line-height: 1.45;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.25s ease, transform 0.25s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   text-align: left;
 }
 
 .hotspot-tooltip h4 {
   font-weight: 700;
-  color: #38bdf8;
-  margin-bottom: 3px;
-  font-size: 12px;
+  color: #10b981;
+  margin-bottom: 4px;
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
 }
 
 .hotspot-tooltip p {
-  color: #cbd5e1;
+  color: #94a3b8;
   font-size: 11px;
 }
 
-.hotspot-3d-pin:hover .hotspot-tooltip {
+.hotspot-3d-pin:hover .hotspot-tooltip,
+.hotspot-3d-pin.active-pin .hotspot-tooltip {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
 }
 
 /* 3D Holographic Badges */
