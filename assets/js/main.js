@@ -942,25 +942,25 @@ function initProductDetailsPage() {
   titleEl.textContent = product.name;
   if (descEl) descEl.textContent = product.desc;
 
-  // Pricing calculations
-  const bdtPrice = product.priceBdt || Math.round(product.price * EXCHANGE_RATE);
-  const regularBdt = product.listPriceBdt || Math.round(product.listPrice * EXCHANGE_RATE);
-  const savingsPct = Math.round(((regularBdt - bdtPrice) / regularBdt) * 100);
-
-  const formattedUsd = Number(product.price).toLocaleString(undefined, {
-    minimumFractionDigits: product.price % 1 === 0 ? 0 : 2,
-    maximumFractionDigits: 2
-  });
-
+  // Pricing: do NOT display prices — show WhatsApp for Price instead
   const priceBdtEl = document.getElementById('price-bdt');
   const priceUsdEl = document.getElementById('price-usd');
   const regularBdtEl = document.getElementById('price-regular-bdt');
   const discountBadgeEl = document.getElementById('price-discount-badge');
 
-  if (priceBdtEl) priceBdtEl.textContent = `৳ ${bdtPrice.toLocaleString('en-IN')}`;
-  if (priceUsdEl) priceUsdEl.textContent = `($${formattedUsd} USD)`;
-  if (regularBdtEl) regularBdtEl.textContent = `৳ ${regularBdt.toLocaleString('en-IN')}`;
-  if (discountBadgeEl) discountBadgeEl.textContent = `Save ${savingsPct}%`;
+  if (priceBdtEl) {
+    priceBdtEl.innerHTML = '<i class="fa-brands fa-whatsapp text-emerald-500 mr-1"></i> WhatsApp for Price';
+  }
+  if (priceUsdEl) priceUsdEl.textContent = '';
+  if (regularBdtEl) regularBdtEl.textContent = '';
+  if (discountBadgeEl) discountBadgeEl.textContent = '';
+
+  // Set WhatsApp inquiry URL with product name
+  const waMsg = encodeURIComponent(`Hello NDIGO TECH SOLUTIONS! Please provide price quotation and delivery time for: ${product.name}.`);
+  const waInquiryUrl = `https://wa.me/8801770082829?text=${waMsg}`;
+  document.querySelectorAll('[data-wa-inquiry]').forEach(el => {
+    el.href = waInquiryUrl;
+  });
 
   // Key Highlights checklist
   const specsList = document.getElementById('product-specs-list');
@@ -1002,7 +1002,6 @@ function initProductDetailsPage() {
   if (relatedGrid) {
     const related = PRODUCT_CATALOG.filter(p => p.id !== product.id).slice(0, 4);
     relatedGrid.innerHTML = related.map(rel => {
-      const rBdt = Math.round(rel.price * EXCHANGE_RATE);
       return `
         <a href="product-details.html?id=${rel.id}" class="group block bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-emerald-500 hover:shadow-lg transition-all">
           <div class="aspect-square w-full rounded-xl bg-white border border-slate-200/60 overflow-hidden mb-3 p-2 flex items-center justify-center">
@@ -1010,9 +1009,9 @@ function initProductDetailsPage() {
           </div>
           <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">${rel.category}</span>
           <h4 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5 group-hover:text-emerald-600 transition">${rel.name}</h4>
-          <div class="mt-2 flex items-baseline justify-between">
-            <span class="text-sm font-extrabold text-emerald-600 font-heading">৳ ${rBdt.toLocaleString('en-IN')}</span>
-            <span class="text-[11px] text-slate-400 font-semibold">$${rel.price.toLocaleString()}</span>
+          <div class="mt-2 flex items-center gap-1.5">
+            <i class="fa-brands fa-whatsapp text-emerald-600 text-xs"></i>
+            <span class="text-xs font-bold text-emerald-700">WhatsApp for Price</span>
           </div>
           <div class="mt-2.5 w-full py-1.5 rounded-lg bg-slate-900 group-hover:bg-emerald-600 text-white text-[11px] font-bold text-center transition">
             View Details &rarr;
@@ -1128,8 +1127,8 @@ function initHeroAutoSlider() {
 
 /* Global Search Bar */
 function initGlobalSearch() {
-  const searchInput = document.getElementById('catalog-search-input');
-  const searchResults = document.getElementById('catalog-search-results');
+  const searchInput = document.getElementById('amazon-global-search');
+  const searchResults = document.getElementById('amazon-search-results');
   if (!searchInput || !searchResults) return;
 
   searchInput.addEventListener('input', () => {
@@ -1159,7 +1158,7 @@ function initGlobalSearch() {
           <p class="text-xs font-bold text-slate-800 line-clamp-1">${p.name}</p>
           <span class="text-[10px] text-emerald-600 font-semibold uppercase">${p.category}</span>
         </div>
-        <span class="text-xs font-extrabold text-slate-900 font-heading">৳ ${(Math.round(p.price * EXCHANGE_RATE)).toLocaleString('en-IN')}</span>
+        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Price on WhatsApp</span>
       </a>
     `).join('');
     searchResults.classList.remove('hidden');
@@ -1190,7 +1189,7 @@ function initCompareEngine() {
         <th class="p-3 bg-slate-900 text-white text-center">
           <img src="${p.image}" class="w-12 h-12 object-contain mx-auto mb-1 bg-white rounded p-1">
           <a href="product-details.html?id=${p.id}" class="text-xs font-bold block text-white hover:text-emerald-400 line-clamp-1">${p.name}</a>
-          <span class="text-xs text-emerald-400 font-extrabold">৳ ${(Math.round(p.price * EXCHANGE_RATE)).toLocaleString('en-IN')}</span>
+          <span class="text-xs text-emerald-400 font-extrabold">WhatsApp for Price</span>
         </th>
       `;
     });
@@ -1339,3 +1338,75 @@ Message: ${message}`);
     window.open(`https://wa.me/8801770082829?text=${waMsg}`, '_blank');
   });
 }
+
+/* ── Category Filter ── */
+window.filterHomeProducts = function(category, btn) {
+  // Update active tab style
+  document.querySelectorAll('.home-filter-tab').forEach(function(tab) {
+    tab.classList.remove('bg-slate-900', 'text-white', 'shadow-sm');
+    tab.classList.add('bg-white', 'hover:bg-slate-100', 'text-slate-700', 'border', 'border-slate-200');
+  });
+  if (btn) {
+    btn.classList.add('bg-slate-900', 'text-white', 'shadow-sm');
+    btn.classList.remove('bg-white', 'hover:bg-slate-100', 'text-slate-700', 'border', 'border-slate-200');
+  }
+
+  // Show/hide category group rows
+  document.querySelectorAll('.category-group-row').forEach(function(row) {
+    if (category === 'all') {
+      row.style.display = '';
+    } else {
+      var rowCat = row.getAttribute('data-category') || '';
+      row.style.display = (rowCat === category) ? '' : 'none';
+    }
+  });
+
+  // When filtering to a specific category, reveal extra items in that category
+  if (category !== 'all') {
+    document.querySelectorAll('.category-group-row').forEach(function(row) {
+      var rowCat = row.getAttribute('data-category') || '';
+      if (rowCat === category) {
+        row.querySelectorAll('.extra-cat-item').forEach(function(item) {
+          item.classList.remove('hidden');
+        });
+      }
+    });
+  }
+};
+
+/* ── See More / Show Less Toggle ── */
+window.toggleCategoryExpand = function(gridId, btn) {
+  var grid = document.getElementById(gridId);
+  if (!grid || !btn) return;
+
+  var isExpanded = btn.getAttribute('data-expanded') === 'true';
+  var extraItems = grid.querySelectorAll('.extra-cat-item');
+  var icon = btn.querySelector('i');
+  // Support both .btn-label class and plain <span>
+  var label = btn.querySelector('.btn-label') || btn.querySelector('span');
+
+  extraItems.forEach(function(item) {
+    if (isExpanded) {
+      item.classList.add('hidden');
+    } else {
+      item.classList.remove('hidden');
+    }
+  });
+
+  btn.setAttribute('data-expanded', isExpanded ? 'false' : 'true');
+
+  if (icon) {
+    if (isExpanded) {
+      icon.classList.remove('fa-chevron-up');
+      icon.classList.add('fa-chevron-down');
+    } else {
+      icon.classList.remove('fa-chevron-down');
+      icon.classList.add('fa-chevron-up');
+    }
+  }
+
+  if (label) {
+    label.textContent = isExpanded ? 'See More Options' : 'Show Less';
+  }
+};
+
