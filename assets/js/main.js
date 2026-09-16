@@ -1056,30 +1056,26 @@ function initSparePartsFilter() {
 
 /* Automatic Scrolling Hero Card with 3 Products */
 function initHeroAutoSlider() {
-  const track = document.getElementById('hero-slider-track');
+  const slides = document.querySelectorAll('.bestseller-slide');
   const dots = document.querySelectorAll('.hero-dot');
   const prevBtn = document.getElementById('btn-hero-prev');
   const nextBtn = document.getElementById('btn-hero-next');
   const sliderContainer = document.getElementById('hero-slider-container');
 
-  if (!track || dots.length === 0) return;
+  if (slides.length === 0) return;
 
   let currentIndex = 0;
-  const totalSlides = dots.length;
   let autoSlideInterval = null;
 
   function goToSlide(index) {
-    currentIndex = (index + totalSlides) % totalSlides;
-    // Track is 300% wide (3 slides). Each slide = 100%/3 of track.
-    // Move by currentIndex * (100/totalSlides)% of track width.
-    track.style.transform = `translateX(-${currentIndex * (100 / totalSlides)}%)`;
+    currentIndex = ((index % slides.length) + slides.length) % slides.length;
 
-    dots.forEach((dot, idx) => {
-      if (idx === currentIndex) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentIndex);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
     });
   }
 
@@ -1098,26 +1094,14 @@ function initHeroAutoSlider() {
   }
 
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      goToSlide(currentIndex - 1);
-      startAutoSlide();
-    });
+    prevBtn.addEventListener('click', () => { goToSlide(currentIndex - 1); startAutoSlide(); });
   }
-
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      goToSlide(currentIndex + 1);
-      startAutoSlide();
-    });
+    nextBtn.addEventListener('click', () => { goToSlide(currentIndex + 1); startAutoSlide(); });
   }
 
-  dots.forEach(dot => {
-    dot.addEventListener('click', (e) => {
-      // dots use data-index attribute
-      const slideIdx = parseInt(e.target.getAttribute('data-index') ?? e.target.getAttribute('data-slide') ?? '0', 10);
-      goToSlide(isNaN(slideIdx) ? 0 : slideIdx);
-      startAutoSlide();
-    });
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goToSlide(i); startAutoSlide(); });
   });
 
   if (sliderContainer) {
@@ -1125,6 +1109,8 @@ function initHeroAutoSlider() {
     sliderContainer.addEventListener('mouseleave', startAutoSlide);
   }
 
+  // Make sure slide 0 is active on init
+  goToSlide(0);
   startAutoSlide();
 }
 
