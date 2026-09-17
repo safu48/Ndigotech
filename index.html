@@ -1086,6 +1086,33 @@
           </div>
         </div>
 
+        <!-- Interactive 3D Showroom Section -->
+        <section id="machinery-3d-section" class="py-12 bg-slate-900 border-y border-slate-800 rounded-2xl mb-12 shadow-2xl overflow-hidden">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
+            <span class="badge-tech-tag mb-2 inline-block"><i class="fa-solid fa-cube"></i> LIVE 3D PREVIEW</span>
+            <h2 class="text-3xl font-black text-white font-heading">Interactive 3D Machinery Showroom</h2>
+            <p class="text-slate-400 text-sm mt-2 max-w-2xl mx-auto">Rotate, zoom, and inspect our industrial plotters and cutters in full 3D. Click the buttons below to switch models.</p>
+            
+            <div class="flex justify-center gap-4 mt-6">
+              <button type="button" class="btn-3d-model active bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition" data-model="plotter" onclick="inspectProductIn3D('plotter')">
+                <i class="fa-solid fa-print"></i> G-MAC Plotter
+              </button>
+              <button type="button" class="btn-3d-model bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold py-2 px-6 rounded-lg shadow-md transition" data-model="cutter" onclick="inspectProductIn3D('cutter')">
+                <i class="fa-solid fa-scissors"></i> SINHAJET Cutter
+              </button>
+            </div>
+          </div>
+          
+          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div id="machinery-3d-viewport" class="w-full h-[500px] bg-[#0f172a] rounded-2xl border border-slate-700 shadow-xl overflow-hidden relative cursor-grab active:cursor-grabbing">
+              <!-- 3D Canvas will be injected here by 3d-viewer.js -->
+              <div class="absolute bottom-4 left-0 w-full text-center pointer-events-none text-slate-400 text-xs font-bold tracking-widest bg-slate-900/50 py-1 backdrop-blur-sm z-10">
+                <i class="fa-solid fa-hand-pointer"></i> DRAG TO ROTATE • SCROLL TO ZOOM
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- CATEGORY 2: Plotters & Cutting Machinery (7) -->
         <div class="category-group-row pt-6 pb-6 border-b border-slate-200" data-category="hardware">
           <div class="flex items-center justify-between mb-4">
@@ -1937,7 +1964,7 @@ y-2 rounded-lg text-xs transition shadow-sm">
 
 
 
-    <!-- Footer -->
+  <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400 text-xs pt-12 pb-8 border-t border-slate-800 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
